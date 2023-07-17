@@ -1,0 +1,1 @@
+select employee342.employeename, employee342.employeeid, department.departmentid, department.departmentname from employee342 inner join department on employee342.departmentid <> department.departmentid;

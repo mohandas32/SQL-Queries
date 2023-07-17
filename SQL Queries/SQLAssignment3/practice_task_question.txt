@@ -1,0 +1,45 @@
+
+Scenario:
+Suppose you have a table named "employees" with the following columns: 
+"employee_id" (integer), 
+"employee_name" (text), 
+"department" (text), 
+"salary" (numeric), and 
+"hire_date" (date). You want to write SQL queries to answer the following questions: 
+How many employees are in the table?
+What is the highest salary in the table?
+What is the average salary by department?
+Who are the top 5 highest paid employees?
+How many employees were hired in the last year?
+How do you select all columns from a table named "employees"?
+How do you select only the "employee_id" and "employee_name" columns from a table named "employees"?
+How do you filter records in a table named "employees" to only include those where the "salary" column is greater than or equal to 50000?
+How do you filter records in a table named "employees" to only include those where the "department" column is "Sales"?
+How do you filter records in a table named "employees" to only include those where the "hire_date" column is between January 1, 2022 and December 31, 2022?
+How do you calculate the average salary of all employees in a table named "employees"?
+How do you calculate the total salary of all employees in a table named "employees"?
+How do you calculate the highest salary in a table named "employees"?
+How do you calculate the lowest salary in a table named "employees"?
+How do you calculate the number of employees in a table named "employees"?
+How do you sort the records in a table named "employees" by the "salary" column in ascending order?
+How do you sort the records in a table named "employees" by the "salary" column in descending order?
+How do you count the number of employees in each department in a table named "employees"?
+How do you select the first 10 records in a table named "employees"?
+How do you select the last 10 records in a table named "employees"?
+How do you select the top 5 highest paid employees from a table named "employees"?
+How do you select the top 10 highest paid employees from a table named "employees"?
+How do you select the bottom 5 lowest paid employees from a table named "employees"?
+How do you select the employees who have a salary that is above the average salary in a table named "employees"?
+How do you select the employees who have a salary that is below the average salary in a table named "employees"?
+How do you select the employees who have a salary that is between 40000 and 60000 in a table named "employees"?
+How do you calculate the total salary of all employees in each department in a table named "employees"?
+How do you calculate the average salary of all employees in each department in a table named "employees"?
+How do you calculate the highest salary of all employees in each department in a table named "employees"?
+How do you calculate the lowest salary of all employees in each department in a table named "employees"?
+How do you select the employees who have been hired in the last year from a table named "employees"?
+How do you select the employees who have been hired in the last 6 months from a table named "employees"?
+How do you select the employees who have been hired in the last 3 months from a table named "employees"?
+How do you select the employees who have been hired in the last week from a table named "employees"?
+How do you select the employees who have a name that starts with the letter "A" in a table named "employees"?
+How do you select the employees who have a name that ends with the letter "s" in a table named "employees"?
+
