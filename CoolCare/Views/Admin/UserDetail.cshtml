@@ -1,0 +1,73 @@
+﻿@model List<CoolCare.Models.User>
+@{
+    ViewBag.Title = "UserDetail";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<!--datatable css link-->
+<link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+<h2 align="center">UserDetail</h2>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    @using (Html.BeginForm("ExportToExcel", "Admin", FormMethod.Post))
+    {
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead class="bg-light font-weight-bold">
+                        <tr>
+                            <td>SR NO.</td>
+                            <td>FIRST NAME</td>
+                            <td>LAST NAME</td>
+                            <td>EMAIL</td>
+                            <td>ADDRESS</td>
+                            <td>MOBILE</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var i in Model)
+                        {
+                            <tr>
+                                <td>@i.UserId</td>
+                                <td>@i.FirstName</td>
+                                <td>@i.LastName</td>
+                                <td>@i.Email</td>
+                                <td>@i.Address</td>
+                                <td>@i.MobileNumber</td>
+                            </tr>
+                        }
+                        @*<tr>
+
+                            <td colspan="4">*@
+                                <br />
+                                <br />
+                                <input type="submit" value="Export to Excel" class="button" />
+                            @*</td>
+                        </tr>*@
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+    </div>
+
+<!--datatable js link-->
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        let table = new DataTable("#dataTable")
+    })
+</script>
+
+
+
+
+
+
+
+
+

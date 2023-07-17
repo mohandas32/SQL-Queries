@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title CoolCare AC Service</title>
+
+    @Styles.Render("~/Content/CoolCare/aos.css")
+
+    @Styles.Render("~/Content/CoolCare/assets/vendor/bootstrap/css/bootstrap.min.css")
+    @Styles.Render("~/Content/CoolCare/assets/vendor/bootstrap-icons/bootstrap-icons.css")
+    @Styles.Render("~/Content/CoolCare/assets/vendor/glightbox/css/glightbox.min.css")
+    @Styles.Render("~/Content/CoolCare/assets/vendor/swiper/swiper-bundle.min.css")
+    @Styles.Render("~/Content/CoolCare/css/style.css")
+
+
+    @*@Scripts.Render("~/bundles/modernizr")*@
+
+</head>
+<body>
+
+    <video id="bgVideo" autoplay loop muted>
+        <source src="~/Content/img/BodyBackground.mp4" type="video/mp4" />
+
+            </video>
+    @*<video id="bgVideo" controls="controls" autoplay loop muted>
+        <source src="~/Content/img/pexels-cottonbro-9694805.mp4" type="video/mp4" />
+    </video>*@
+    <a href="https://api.whatsapp.com/send?
+         phone=6352600352
+         &amp;text=Hola%information%." class="float" target="_blank">
+        <i class="fa fa-whatsapp" style="font-size:48px;color:white; padding-top: 5px;"></i>
+    </a>
+
+
+
+    @*======= Header =======*@
+    <header id="header" class="fixed-top d-flex align-items-center">
+        <div class=" container d-flex justify-content-between">
+
+            <div class="logo">
+
+                <a href="/"><img src="~/Content/CoolCare/assets/img/coolCare.png" alt="" class="img-fluid" width="120%" /> </a>
+            </div>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto " href="@Url.Action("Index", "Home")#hero">Home</a></li>
+                    <li><a class="nav-link scrollto" href="@Url.Action("Index", "Home")#services">Services</a></li>
+                    <li><a class="nav-link scrollto" href="@Url.Action("Index", "Home")#about">About</a></li>
+                    <li><a class="nav-link scrollto" href="@Url.Action("Index", "Home")#why-us">Team</a></li>
+                    <li><a class="nav-link scrollto" href="@Url.Action("Index", "Home")#contact">Contact</a></li>
+                    @if (Session["userName"] != null)
+                    {
+
+                        <li id="Account">
+                            @*<a class="nav-link scrollto" href="#">Profile</a>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                                     aria-labelledby="userDropdown">
+                    <a class="dropdown-item py-3" href="/Home/Account">
+                        <i class="fas fa-user-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        My Profile
+                    </a>
+
+                </div>*@
+
+                            <div class="dropdown">
+                                <a class="dropdown-toggle" id="dropdownMenuButton1" aria-expanded="false">
+                                    Profile
+                                </a>
+                                <ul class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton1">
+                                    <li>
+                                        <a class="dropdown-item py-3" href="@Url.Action("UserProfile", "Home")">
+                                            My Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item py-3" href="/Login/Logout" data-toggle="modal" data-target="#logoutModal">
+                                            Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </li>
+
+
+
+                        @*<li id="Login"><a class="nav-link scrollto" href="/Home/Logout">Logout</a></li>*@
+                    }
+                    else
+                    {
+                        <li id="Login"><a class="nav-link scrollto" href="/Login/UserLogin">Login</a></li>
+                        <li id="Login"><a class="nav-link scrollto" href="/Login/UserSignUp">Register</a></li>
+
+
+                    }
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+           
+        </div>
+    </header>
+
+    <div>
+
+        @RenderBody()
+
+
+        <hr />
+
+        <!-- ======= Footer ======= -->
+        <footer id="footer">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-md-6 footer-info">
+                            <h3>About Us</h3>
+                            <p>
+                                Our AC repair and service company is one of the most reputable. Our experts service all
+                                brands of air conditioners at an affordable rate.
+                                Our company is supported by a group of specialists. For any repair needs, we are your best
+                                option. We love providing service and assistance at your doorstep, and we never compromise
+                                on quality.
+                            </p>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 footer-links">
+                            <h4>Useful Links</h4>
+                            <ul>
+                                <li><a href="#hero">Home</a></li>
+                                <li><a href="#about">About us</a></li>
+                                <li><a href="#services">Services</a></li>
+
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 footer-contact">
+                            <h4 class="text-primary">Contact Us</h4>
+                            <p>
+                                coolcare office, Palladium mall <br> S G highway <br> ahmedabad
+                                <strong>Phone:</strong> +91 6352600352<br>
+                                <strong>Email:</strong> coolcareindia099@gmail.com<br>
+                            </p>
+
+                            <div class="social-links">
+                                <a href="javascript:void(0)" id="twitter"><i class="bi bi-twitter"></i></a>
+                                <a href="javascript:void(0)" id="facebook"><i class="bi bi-facebook"></i></a>
+                                <a href="javascript:void(0)" id="instagram"><i class="bi bi-instagram"></i></a>
+                                <a href="javascript:void(0)" id="linkedin"><i class="bi bi-linkedin"></i></a>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 footer-newsletter" style="display: none;">
+                            <h4>Our Newsletter</h4>
+                            <p>
+                                Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam
+                                illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase
+                                seza.
+                            </p>
+                            <form action="" method="post">
+                                <input type="email" name="email"><input type="submit" value="Subscribe">
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="copyright">
+                    &copy; Copyright <strong>CoolCare</strong>. All Rights Reserved
+                </div>
+                <div class="credits">
+
+                    Designed by <a href="#">CoolCare</a>
+                </div>
+            </div>
+        </footer>
+        <!-- End Footer -->
+        @*<footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
+    </div>
+
+    @Scripts.Render("~/Scripts/CoolCare/assets/vendor/purecounter/purecounter.js")
+    @Scripts.Render("~/Scripts/CoolCare/aos.js")
+    @Scripts.Render("~/Scripts/CoolCare/assets/vendor/bootstrap/js/bootstrap.bundle.min.js")
+    @Scripts.Render("~/Scripts/CoolCare/assets/vendor/glightbox/js/glightbox.min.js")
+    @Scripts.Render("~/Scripts/CoolCare/assets/vendor/isotope-layout/isotope.pkgd.min.js")
+    @Scripts.Render("~/Scripts/CoolCare/assets/vendor/swiper/swiper-bundle.min.js")
+    @Scripts.Render("~/Scripts/CoolCare/main.js")
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>

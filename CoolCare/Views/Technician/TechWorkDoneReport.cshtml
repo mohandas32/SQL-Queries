@@ -1,0 +1,80 @@
+﻿
+@{
+    Layout = "~/Views/Shared/FormLayout.cshtml";
+}
+
+@{
+    Html.RenderPartial("~/Views/Shared/HeaderPartialView.cshtml");
+}
+
+<link href="~/Content/CoolCare/css/TechWorkDoneReport.css" rel="stylesheet" />
+
+<div class="container">
+    @using (Html.BeginForm("TechWorkDoneReport", "Technician", FormMethod.Post, new { @class = "row needs-validation TechWorkDoneReport" }))
+    {
+    <h1 align="center" class="mb-5">Generate Report</h1>
+    <div class="col-md-4">
+        <label for="validationCustom02" class="form-label">Service Id</label>
+        <input type="text" value="@ViewBag.serviceid" readonly oninput="validate(this)" class="form-control" id="validationCustom02"
+               onkeydown="return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key))"
+               required>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+        <div class="invalid-feedback">
+            Please provide a valid Number.
+        </div>
+    </div>
+    <div class="col-md-4">
+        <label for="validationCustom01" class="form-label">Technician Id</label>
+        <input type="text" value="@ViewBag.customerid" readonly oninput="validate(this)" class="form-control" id="validationCustom01"
+               onkeydown="return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key))"
+               required>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+        <div class="invalid-feedback">
+            Please provide your Id.
+        </div>
+    </div>
+    <div class="col-md-4">
+        <label for="validationCustom01" class="form-label">Customer Id</label>
+        <input type="text" value="@ViewBag.technicianid" readonly oninput="validate(this)" class="form-control" id="validationCustom02"
+               onkeydown="return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key))"
+               required>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+        <div class="invalid-feedback">
+            Please provide your Id.
+        </div>
+    </div>
+    <div class="col-md-4">
+        <label for="validationCustom01" class="form-label">Payment</label>
+        <div class="input-group">
+            <input id="Payment-Cash" type="radio" name="Payment" value="Cash" checked="checked" />
+            <label for="Payment-Cash" id="cash">Cash</label>
+            <input id="Payment-Online" type="radio" name="Payment" value="Online" />
+            <label for="Payment-Online" id="online">Online</label>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <label for="validationCustom03" class="form-label">Service Description</label>
+        <textarea oninput="validate(this)" class="form-control" id="validationCustom03" rows="4" required></textarea>
+        <div class="invalid-feedback">
+            Please provide a service description.
+        </div>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+    </div>
+
+    <div class="col-12 text-center mt-4">
+        <button class="btn btn-primary px-3 py-2 submitButton" type="submit">Submit </button>
+    </div>
+    }
+</div>
+@{
+    Html.RenderPartial("~/Views/Shared/FooterPartialView.cshtml");
+}
+

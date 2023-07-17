@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "VerifyAccount";
+    Layout = "~/Views/Shared/FormLayout.cshtml";
+}
+
+@{
+    Html.RenderPartial("~/Views/Shared/HeaderPartialView.cshtml");
+}
+<div class="container">
+    <h2 align="center" class="mt-5 text-white">uuuuu</h2>
+
+    @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+    {
+        <div class="alert alert-success text-success mt-5">
+            <strong>Success!</strong> Your account has been activated successfully. Click here to <a href='@Url.Action("UserLogin", "Login")'><button class="btn btn-success">LOGIN</button></a>
+    </div>
+    }
+    else
+    {
+        <div class="alert alert-danger mt-5">
+            <strong>Error!</strong> @ViewBag.Message
+        </div>
+    }
+ </div>

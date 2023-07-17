@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="coolcareModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Bookservice">
+    <Key>
+      <PropertyRef Name="ServiceId" />
+    </Key>
+    <Property Name="ServiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NumberOfAC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TypesOfAC" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TypesOfService" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="AssignedTechnician" Type="Int32" />
+    <Property Name="ServiceStatus" Type="Int32" />
+    <NavigationProperty Name="Service" Relationship="Self.FK__Bookservi__Types__6B24EA82" FromRole="Bookservices" ToRole="Services" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Bookservi__User___45F365D3" FromRole="Bookservices" ToRole="Users" />
+    <NavigationProperty Name="GenerateReports" Relationship="Self.FK__GenerateR__Servi__4E88ABD4" FromRole="Bookservices" ToRole="GenerateReport" />
+    <NavigationProperty Name="Payments" Relationship="Self.FK__Payment__Service__48CFD27E" FromRole="Bookservices" ToRole="Payment" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ContactU">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="GenerateReport">
+    <Key>
+      <PropertyRef Name="ReportId" />
+    </Key>
+    <Property Name="ReportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ServiceDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ServiceDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CustomerId" Type="Int32" />
+    <Property Name="TechnicianId" Type="Int32" />
+    <Property Name="ServiceId" Type="Int32" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="ServiceAmount" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="Bookservice" Relationship="Self.FK__GenerateR__Servi__4E88ABD4" FromRole="GenerateReport" ToRole="Bookservices" />
+    <NavigationProperty Name="User" Relationship="Self.FK__GenerateR__Custo__4CA06362" FromRole="GenerateReport" ToRole="Users" />
+    <NavigationProperty Name="User1" Relationship="Self.FK__GenerateR__Techn__4D94879B" FromRole="GenerateReport" ToRole="Users" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Package">
+    <Key>
+      <PropertyRef Name="PackageId" />
+    </Key>
+    <Property Name="PackageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeOfPackage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="RemainingServices" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="Amount" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Package__User_id__5165187F" FromRole="Package" ToRole="Users" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ACType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ACCapacity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="PaymentId" />
+    </Key>
+    <Property Name="PaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaymentType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Amount" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="ServiceId" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="Bookservice" Relationship="Self.FK__Payment__Service__48CFD27E" FromRole="Payment" ToRole="Bookservices" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Payment__User_id__49C3F6B7" FromRole="Payment" ToRole="Users" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ServiceName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ServiceDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="isDeleted" Type="Boolean" />
+    <Property Name="Price" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Bookservices" Relationship="Self.FK__Bookservi__Types__6B24EA82" FromRole="Services" ToRole="Bookservices" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="true" />
+    <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="true" />
+    <Property Name="MobileNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="true" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="true" />
+    <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="true" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="true" />
+    <Property Name="Pincode" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="true" />
+    <Property Name="UserTypeId" Type="Int32" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="true" />
+    <NavigationProperty Name="Bookservices" Relationship="Self.FK__Bookservi__User___45F365D3" FromRole="Users" ToRole="Bookservices" />
+    <NavigationProperty Name="GenerateReports" Relationship="Self.FK__GenerateR__Custo__4CA06362" FromRole="Users" ToRole="GenerateReport" />
+    <NavigationProperty Name="GenerateReports1" Relationship="Self.FK__GenerateR__Techn__4D94879B" FromRole="Users" ToRole="GenerateReport" />
+    <NavigationProperty Name="Packages" Relationship="Self.FK__Package__User_id__5165187F" FromRole="Users" ToRole="Package" />
+    <NavigationProperty Name="Payments" Relationship="Self.FK__Payment__User_id__49C3F6B7" FromRole="Users" ToRole="Payment" />
+    <NavigationProperty Name="Feedbacks" Relationship="Self.FK__Feedback__User_i__5535A963" FromRole="Users" ToRole="Feedback" />
+    <NavigationProperty Name="UserType" Relationship="Self.FK__Users__UserTypeI__4316F928" FromRole="Users" ToRole="UserType" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" Nullable="true" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" Nullable="true" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserTypeName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Users__UserTypeI__4316F928" FromRole="UserType" ToRole="Users" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Feedback">
+    <Key>
+      <PropertyRef Name="Feedback1" />
+      <PropertyRef Name="fId" />
+    </Key>
+    <Property Name="Feedback1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Feedback__User_i__5535A963" FromRole="Feedback" ToRole="Users" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <Property Name="fId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <Association Name="FK__Bookservi__Types__6B24EA82">
+    <End Role="Services" Type="Self.Service" Multiplicity="0..1" />
+    <End Role="Bookservices" Type="Self.Bookservice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Services">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bookservices">
+        <PropertyRef Name="TypesOfService" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bookservi__User___45F365D3">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Bookservices" Type="Self.Bookservice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Bookservices">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GenerateR__Servi__4E88ABD4">
+    <End Role="Bookservices" Type="Self.Bookservice" Multiplicity="0..1" />
+    <End Role="GenerateReport" Type="Self.GenerateReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bookservices">
+        <PropertyRef Name="ServiceId" />
+      </Principal>
+      <Dependent Role="GenerateReport">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Payment__Service__48CFD27E">
+    <End Role="Bookservices" Type="Self.Bookservice" Multiplicity="0..1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bookservices">
+        <PropertyRef Name="ServiceId" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GenerateR__Custo__4CA06362">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="GenerateReport" Type="Self.GenerateReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="GenerateReport">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GenerateR__Techn__4D94879B">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="GenerateReport" Type="Self.GenerateReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="GenerateReport">
+        <PropertyRef Name="TechnicianId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Package__User_id__5165187F">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Package" Type="Self.Package" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Package">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Payment__User_id__49C3F6B7">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Feedback__User_i__5535A963">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Feedback">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Users__UserTypeI__4316F928">
+    <End Role="UserType" Type="Self.UserType" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="UserTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="coolcareEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Bookservices" EntityType="Self.Bookservice" />
+    <EntitySet Name="ContactUs" EntityType="Self.ContactU" />
+    <EntitySet Name="GenerateReports" EntityType="Self.GenerateReport" />
+    <EntitySet Name="Packages" EntityType="Self.Package" />
+    <EntitySet Name="Payments" EntityType="Self.Payment" />
+    <EntitySet Name="Services" EntityType="Self.Service" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+    <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
+    <AssociationSet Name="FK__Bookservi__Types__6B24EA82" Association="Self.FK__Bookservi__Types__6B24EA82">
+      <End Role="Services" EntitySet="Services" />
+      <End Role="Bookservices" EntitySet="Bookservices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bookservi__User___45F365D3" Association="Self.FK__Bookservi__User___45F365D3">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Bookservices" EntitySet="Bookservices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GenerateR__Servi__4E88ABD4" Association="Self.FK__GenerateR__Servi__4E88ABD4">
+      <End Role="Bookservices" EntitySet="Bookservices" />
+      <End Role="GenerateReport" EntitySet="GenerateReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Payment__Service__48CFD27E" Association="Self.FK__Payment__Service__48CFD27E">
+      <End Role="Bookservices" EntitySet="Bookservices" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GenerateR__Custo__4CA06362" Association="Self.FK__GenerateR__Custo__4CA06362">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="GenerateReport" EntitySet="GenerateReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GenerateR__Techn__4D94879B" Association="Self.FK__GenerateR__Techn__4D94879B">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="GenerateReport" EntitySet="GenerateReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Package__User_id__5165187F" Association="Self.FK__Package__User_id__5165187F">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Package" EntitySet="Packages" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Payment__User_id__49C3F6B7" Association="Self.FK__Payment__User_id__49C3F6B7">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Feedback__User_i__5535A963" Association="Self.FK__Feedback__User_i__5535A963">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Feedback" EntitySet="Feedbacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Users__UserTypeI__4316F928" Association="Self.FK__Users__UserTypeI__4316F928">
+      <End Role="UserType" EntitySet="UserTypes" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <FunctionImport Name="testing" ReturnType="Collection(coolcareModel.testing_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AddTechnician">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+      <Parameter Name="usertypeid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AddServices">
+      <Parameter Name="servicename" Mode="In" Type="String" />
+      <Parameter Name="servicedesc" Mode="In" Type="String" />
+      <Parameter Name="price" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="EditProfileData">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="firstname" Mode="In" Type="String" />
+      <Parameter Name="lastname" Mode="In" Type="String" />
+      <Parameter Name="mobileno" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="state" Mode="In" Type="String" />
+      <Parameter Name="city" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="pincode" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="BookService">
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="noofac" Mode="In" Type="String" />
+      <Parameter Name="typeofac" Mode="In" Type="String" />
+      <Parameter Name="typeofservice" Mode="In" Type="Int32" />
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="testing_Result">
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Password" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="State" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Pincode" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="UserTypeId" Nullable="true" />
+    <Property Type="Boolean" Name="IsDeleted" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="UpdatedOn" Nullable="true" Precision="23" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="60dfce2f6892437ba7e478fd92f88df4" Name="Diagram1">
+        <EntityTypeShape EntityType="coolcareModel.Bookservice" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="coolcareModel.ContactU" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="coolcareModel.Feedback" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="coolcareModel.GenerateReport" Width="1.5" PointX="7.5" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="coolcareModel.Package" Width="1.5" PointX="5.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="coolcareModel.Payment" Width="1.5" PointX="10.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="coolcareModel.Service" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="coolcareModel.User" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="coolcareModel.UserType" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <AssociationConnector Association="coolcareModel.FK__Bookservi__Types__07C12930" ManuallyRouted="false" />
+        <AssociationConnector Association="coolcareModel.FK__Bookservi__Types__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="coolcareModel.FK__Bookservi__User___45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="coolcareModel.FK__Bookservi__UserI__08B54D69" ManuallyRouted="false" />
+        <AssociationConnector Association="coolcareModel.FK__GenerateR__Servi__0B91BA14" ManuallyRouted="false" />
+        <AssociationConnector Association="coolcareModel.FK__GenerateR__Servi__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="coolcareModel.FK__Payment__Service__0E6E26BF" ManuallyRouted="false" />
+        <AssociationConnector Association="coolcareModel.FK__Payment__Service__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="coolcareModel.FK__Feedback__User_i__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="coolcareModel.FK__Feedback__UserId__09A971A2" ManuallyRouted="false" />
+        <AssociationConnector Association="coolcareModel.FK__GenerateR__Custo__0A9D95DB" ManuallyRouted="false" />
+        <AssociationConnector Association="coolcareModel.FK__GenerateR__Custo__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="coolcareModel.FK__GenerateR__Techn__0C85DE4D" ManuallyRouted="false" />
+        <AssociationConnector Association="coolcareModel.FK__GenerateR__Techn__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="coolcareModel.FK__Package__User_id__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="coolcareModel.FK__Package__UserId__0D7A0286" ManuallyRouted="false" />
+        <AssociationConnector Association="coolcareModel.FK__Payment__User_id__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="coolcareModel.FK__Payment__UserId__0F624AF8" ManuallyRouted="false" />
+        <AssociationConnector Association="coolcareModel.FK__Users__UserTypeI__10566F31" ManuallyRouted="false" />
+        <AssociationConnector Association="coolcareModel.FK__Users__UserTypeI__4316F928" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

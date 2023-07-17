@@ -1,0 +1,634 @@
+﻿
+@model CoolCare.Models.ServicePackage
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UserProfile</title>
+    <!-- Include Bootstrap Icons CSS -->
+    <link rel="stylesheet" href="/path/to/bootstrap-icons.min.css" />
+
+    <link href="~/Content/CoolCare/css/UserProfile.css" rel="stylesheet" />
+
+    <script src="~/Content/AdminDashboard/asset/vendor/jquery/jquery.min.js"></script>
+
+</head>
+
+@if (TempData["updateprofilemsg"] != null)
+{
+    <script src="~/Content/AdminDashboard/asset/vendor/jquery/jquery.min.js"></script>
+
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+        </symbol>
+        <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+        </symbol>
+        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+        </symbol>
+    </svg>
+
+
+
+    <div class="alertParent" style="display:none;">
+        <div class="alert mt-5 alert-success d-flex align-items-center justify-content-end CoolCareAlert" role="alert" style="width: 300px; position: fixed; top: 35px; right: 0; z-index: 10;">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill" /></svg>
+            <div>
+                @TempData["updateprofilemsg"]
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('.alertParent').show();
+            $('.alertParent').css("display", "block");
+            setTimeout(function () {
+                $('.alertParent').fadeOut('slow');
+                $('.alertParent').css("display", "none !important");
+            }, 5000);
+        });
+    </script>
+}
+ else if (TempData["userfeedbackmsg"] != null)
+{
+    <script src="~/Content/AdminDashboard/asset/vendor/jquery/jquery.min.js"></script>
+
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+        </symbol>
+        <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+        </symbol>
+        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+        </symbol>
+    </svg>
+
+
+
+    <div class="alertParent" style="display:none;">
+        <div class="alert mt-5 alert-success d-flex align-items-center justify-content-end CoolCareAlert" role="alert" style="width: 300px; position: fixed; top: 35px; right: 0; z-index: 10;">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill" /></svg>
+            <div>
+                @TempData["userfeedbackmsg"]
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('.alertParent').show();
+            $('.alertParent').css("display", "block");
+            setTimeout(function () {
+                $('.alertParent').fadeOut('slow');
+                $('.alertParent').css("display", "none !important");
+            }, 5000);
+        });
+    </script>
+}
+
+
+
+<body>
+    <div class="container bootstrap snippets bootdey mt-5">
+        <div class="row mt-5">
+            <div class="profile-nav col-md-3">
+                <div class="panel3">
+                    <div class="user-heading round">
+                        <a href="#">
+                            <img src="~/Content/CoolCare/assets/img/profile.png" />
+                        </a>
+                        <h1 class="mt-3">
+                            @Model.user.FirstName
+                            @Model.user.LastName
+                        </h1>
+                        <p>@Model.user.Email</p>
+                    </div>
+
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item">
+                            <a href="#" id="Profile" class="headOne nav-link active">
+                                <i class="bi bi-person"></i> Profile
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" id="Services" class="headOne nav-link">
+                                <i class="bi bi-calendar"></i>Services
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" id="Packages" class="headOne nav-link">
+                                <i class="bi bi-pencil-square"></i>Packages
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="profile-info col-md-9">
+                <div class="panel2">
+                    @using (Html.BeginForm("UserFeedback", "Home", FormMethod.Post))
+                    {
+                        <textarea placeholder="Any feedbacks for us?" rows="5"
+                                  class="form-control input-lg p-text-area" name="feedback"></textarea>
+
+
+                        <footer class="bg-light text-center p-3">
+                            <button class="postButton px-4 btn float-end" type="submit">Post</button>
+                            <ul class="nav nav-pills">
+                                <li class="icon nav-item">
+                                    <a href="#" class="nav-link"><i class="bi bi-geo"></i></a>
+                                </li>
+                                <li class="icon nav-item">
+                                    <a href="#" class="nav-link"><i class="bi bi-camera"></i></a>
+                                </li>
+                                <li class="icon nav-item">
+                                    <a href="#" class="nav-link"><i class="bi bi-film"></i></a>
+                                </li>
+                                <li class="icon nav-item">
+                                    <a href="#" class="nav-link"><i class="bi bi-mic"></i></a>
+                                </li>
+                            </ul>
+                        </footer>
+
+
+                    }
+                </div>
+                <div class="panel mt-3"></div>
+
+                <div class="formBody Profile">
+                    <div class="bio-graph-heading">
+                        You Can See And Edit Your Profile Details From Here
+                    </div>
+
+
+                    @using (Html.BeginForm("UserProfile", "Home", FormMethod.Post))
+                    {
+                        <h6 class="heading-small text-muted mb-4">User information</h6>
+                        <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label"> First Name </label>
+                                        @Html.TextBoxFor(model => model.user.FirstName, new { @class = "form-control form-control-alternative", @readonly = "readonly" })
+                                        @Html.ValidationMessageFor(model => model.user.FirstName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label"> Last Name </label>
+                                        @Html.TextBoxFor(model => model.user.LastName, new { @class = "form-control form-control-alternative", @readonly = "readonly" })
+                                        @Html.ValidationMessageFor(model => model.user.LastName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-4" />
+                        <h6 class="heading-small text-muted mb-4">Contact Information</h6>
+                        <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label"> Email </label>
+                                        @Html.TextBoxFor(model => model.user.Email, new { @class = "form-control form-control-alternative", @readonly = "readonly" })
+                                        @Html.ValidationMessageFor(model => model.user.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label"> Mobile Number </label>
+                                        @Html.TextBoxFor(model => model.user.MobileNumber, new { @class = "form-control form-control-alternative", @readonly = "readonly" })
+                                        @Html.ValidationMessageFor(model => model.user.MobileNumber, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4" />
+                        <h6 class="heading-small text-muted mb-4">Address information</h6>
+                        <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group has-label">
+                                        @Html.Label("Address", new { @class = "form-control-label" })
+                                        @Html.TextBoxFor(model => model.user.Address, new { @class = "form-control form-control-alternative", @placeholder = "Home Address", @readonly = "readonly" })
+                                        @Html.ValidationMessageFor(model => model.user.Address, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group has-label">
+                                        @Html.Label("City", new { @class = "form-control-label" })
+                                        @Html.TextBoxFor(model => model.user.City, new { @class = "form-control form-control-alternative", @placeholder = "City", @readonly = "readonly" })
+                                        @Html.ValidationMessageFor(model => model.user.City, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group has-label">
+                                        @Html.Label("State", new { @class = "form-control-label" })
+                                        @Html.TextBoxFor(model => model.user.State, new { @class = "form-control form-control-alternative", @placeholder = "State", @readonly = "readonly" })
+                                        @Html.ValidationMessageFor(model => model.user.State, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group has-label">
+                                        @Html.Label("Postal code", new { @class = "form-control-label" })
+                                        @Html.TextBoxFor(model => model.user.Pincode, new { @class = "form-control form-control-alternative", @placeholder = "Postal code", @readonly = "readonly" })
+                                        @Html.ValidationMessageFor(model => model.user.Pincode, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="lastRow col-lg-12 mt-5 text-center">
+                                    @*<input type="button" class="btn sendMessage" id="EditDetails" value="Edit Details" />*@
+                                    <button class="btn sendMessage" id="EditDetails" type="button">Edit Details</button>
+                                    <button class="btn sendMessage" id="submitChanges" type="submit">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+
+                <div class="Services">
+                    <div>
+                        <div class="ThirdRow row">
+                            @for (int i = 0; i < Model.ServiceList.Count(); i++)
+                            {<div class="col-md-6 mt-5">
+                                    <div class="panel">
+                                        <div class="panel-body">
+                                            <div class="bio-chart">
+                                                <div style="display: inline; width: 100px; height: 100px">
+                                                    <canvas width="100" height="100px"></canvas>
+                                                    @if (i % 4 == 0)
+                                                    {
+                                                        <input class="knob" data-width="100" data-height="100"
+                                                               data-displayprevious="true" data-thickness=".2" readonly
+                                                               value="@(i+1)" data-fgcolor="#e06b7d" data-bgcolor="#e8e8e8" style="
+                              width: 54px;
+                              height: 33px;
+                              position: absolute;
+                              vertical-align: middle;
+                              margin-top: 33px;
+                              margin-left: -77px;
+                              border: 0px;
+                              font-weight: bold;
+                              font-style: normal;
+                              font-variant: normal;
+                              font-stretch: normal;
+                              font-size: 20px;
+                              line-height: normal;
+                              font-family: Arial;
+                              text-align: center;
+                              color: rgb(224, 107, 125);
+                              padding: 0px;
+                              -webkit-appearance: none;
+                              background: none;
+                            " />
+                                                    }
+                                                    else if (i % 4 == 1)
+                                                    {
+                                                        <input class="knob" data-width="100" data-height="100"
+                                                               data-displayprevious="true" data-thickness=".2" readonly
+                                                               value="@(i+1)" data-fgcolor="#4CC5CD" data-bgcolor="#e8e8e8" style="
+                              width: 54px;
+                              height: 33px;
+                              position: absolute;
+                              vertical-align: middle;
+                              margin-top: 33px;
+                              margin-left: -77px;
+                              border: 0px;
+                              font-weight: bold;
+                              font-style: normal;
+                              font-variant: normal;
+                              font-stretch: normal;
+                              font-size: 20px;
+                              line-height: normal;
+                              font-family: Arial;
+                              text-align: center;
+                              color: rgb(76, 197, 205);
+                              padding: 0px;
+                              -webkit-appearance: none;
+                              background: none;
+                            " />
+                                                    }
+                                                    else if (i % 4 == 2)
+                                                    {
+                                                        <input class="knob" data-width="100" data-height="100"
+                                                               data-displayprevious="true" data-thickness=".2" readonly
+                                                               value="@(i+1)" data-fgcolor="#96be4b" data-bgcolor="#e8e8e8" style="
+                              width: 54px;
+                              height: 33px;
+                              position: absolute;
+                              vertical-align: middle;
+                              margin-top: 33px;
+                              margin-left: -77px;
+                              border: 0px;
+                              font-weight: bold;
+                              font-style: normal;
+                              font-variant: normal;
+                              font-stretch: normal;
+                              font-size: 20px;
+                              line-height: normal;
+                              font-family: Arial;
+                              text-align: center;
+                              color: rgb(150, 190, 75);
+                              padding: 0px;
+                              -webkit-appearance: none;
+                              background: none;
+                            " />
+                                                    }
+                                                    else if (i % 4 == 3)
+                                                    {
+                                                        <input class="knob" data-width="100" data-height="100"
+                                                               data-displayprevious="true" data-thickness=".2" readonly
+                                                               value="@(i+1)" data-fgcolor="#cba4db" data-bgcolor="#e8e8e8" style="
+                              width: 54px;
+                              height: 33px;
+                              position: absolute;
+                              vertical-align: middle;
+                              margin-top: 33px;
+                              margin-left: -77px;
+                              border: 0px;
+                              font-weight: bold;
+                              font-style: normal;
+                              font-variant: normal;
+                              font-stretch: normal;
+                              font-size: 20px;
+                              line-height: normal;
+                              font-family: Arial;
+                              text-align: center;
+                              color: rgb(203, 164, 219);
+                              padding: 0px;
+                              -webkit-appearance: none;
+                              background: none;
+                            " />
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div class="bio-desk">
+                                                @if (i % 4 == 0)
+                                                {
+                                                    <h4 class="red">
+                                                        @Model.ServiceList[i].Service.ServiceName
+                                                    </h4>
+                                                }
+                                                else if (i % 4 == 1)
+                                                {
+                                                    <h4 class="terques">
+                                                        @Model.ServiceList[i].Service.ServiceName
+                                                    </h4>
+                                                }
+                                                else if (i % 4 == 2)
+                                                {
+                                                    <h4 class="green">
+                                                        @Model.ServiceList[i].Service.ServiceName
+                                                    </h4>
+                                                }
+                                                else if (i % 4 == 3)
+                                                {
+                                                    <h4 class="purple">
+                                                        @Model.ServiceList[i].Service.ServiceName
+                                                    </h4>
+                                                }
+
+                                                <p>Service Id : @Model.ServiceList[i].ServiceId</p>
+                                                <p>Date Of Booking : @Model.ServiceList[i].CreatedOn</p>
+                                                <p>
+                                                    Date Of Work Done : @Model.ServiceList[i].UpdatedOn
+                                                </p>
+                                                <p>Address : @Model.ServiceList[i].Address</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Packages">
+                    <div>
+                        <div class="ThirdRow row">
+                            @for (int i = 0; i < Model.PackageList.Count(); i++)
+                            {<div class="col-md-6 mt-5">
+                                    <div class="panel">
+                                        <div class="panel-body">
+                                            <div class="bio-chart">
+                                                <div style="display: inline; width: 100px; height: 100px">
+                                                    <canvas width="100" height="100px"></canvas>
+                                                    @if (i % 4 == 0)
+                                                    {
+                                                        <input class="knob" data-width="100" data-height="100"
+                                                               data-displayprevious="true" data-thickness=".2" readonly value="@(i+1)"
+                                                               data-fgcolor="#e06b7d" data-bgcolor="#e8e8e8" style="
+                              width: 54px;
+                              height: 33px;
+                              position: absolute;
+                              vertical-align: middle;
+                              margin-top: 33px;
+                              margin-left: -77px;
+                              border: 0px;
+                              font-weight: bold;
+                              font-style: normal;
+                              font-variant: normal;
+                              font-stretch: normal;
+                              font-size: 20px;
+                              line-height: normal;
+                              font-family: Arial;
+                              text-align: center;
+                              color: rgb(224, 107, 125);
+                              padding: 0px;
+                              -webkit-appearance: none;
+                              background: none;
+                            " />
+                                                    }
+                                                    else if (i % 4 == 1)
+                                                    {
+                                                        <input class="knob" data-width="100" data-height="100"
+                                                               data-displayprevious="true" data-thickness=".2" readonly value="@(i+1)"
+                                                               data-fgcolor="#4CC5CD" data-bgcolor="#e8e8e8" style="
+                              width: 54px;
+                              height: 33px;
+                              position: absolute;
+                              vertical-align: middle;
+                              margin-top: 33px;
+                              margin-left: -77px;
+                              border: 0px;
+                              font-weight: bold;
+                              font-style: normal;
+                              font-variant: normal;
+                              font-stretch: normal;
+                              font-size: 20px;
+                              line-height: normal;
+                              font-family: Arial;
+                              text-align: center;
+                              color: rgb(76, 197, 205);
+                              padding: 0px;
+                              -webkit-appearance: none;
+                              background: none;
+                            " />
+                                                    }
+                                                    else if (i % 4 == 2)
+                                                    {
+                                                        <input class="knob" data-width="100" data-height="100"
+                                                               data-displayprevious="true" data-thickness=".2" readonly value="@(i+1)"
+                                                               data-fgcolor="#96be4b" data-bgcolor="#e8e8e8" style="
+                              width: 54px;
+                              height: 33px;
+                              position: absolute;
+                              vertical-align: middle;
+                              margin-top: 33px;
+                              margin-left: -77px;
+                              border: 0px;
+                              font-weight: bold;
+                              font-style: normal;
+                              font-variant: normal;
+                              font-stretch: normal;
+                              font-size: 20px;
+                              line-height: normal;
+                              font-family: Arial;
+                              text-align: center;
+                              color: rgb(150, 190, 75);
+                              padding: 0px;
+                              -webkit-appearance: none;
+                              background: none;
+                            " />
+                                                    }
+                                                    else if (i % 4 == 3)
+                                                    {
+                                                        <input class="knob" data-width="100" data-height="100"
+                                                               data-displayprevious="true" data-thickness=".2" readonly value="@(i+1)"
+                                                               data-fgcolor="#cba4db" data-bgcolor="#e8e8e8" style="
+                              width: 54px;
+                              height: 33px;
+                              position: absolute;
+                              vertical-align: middle;
+                              margin-top: 33px;
+                              margin-left: -77px;
+                              border: 0px;
+                              font-weight: bold;
+                              font-style: normal;
+                              font-variant: normal;
+                              font-stretch: normal;
+                              font-size: 20px;
+                              line-height: normal;
+                              font-family: Arial;
+                              text-align: center;
+                              color: rgb(203, 164, 219);
+                              padding: 0px;
+                              -webkit-appearance: none;
+                              background: none;
+                            " />
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div class="bio-desk">
+                                                @if (i % 4 == 0)
+                                                {
+                                                    <h4 class="red">@Model.PackageList[i].TypeOfPackage</h4>
+                                                }
+                                                else if (i % 4 == 1)
+                                                {
+                                                    <h4 class="terques">
+                                                        @Model.PackageList[i].TypeOfPackage
+                                                    </h4>
+                                                }
+                                                else if (i % 4 == 2)
+                                                {
+                                                    <h4 class="green">
+                                                        @Model.PackageList[i].TypeOfPackage
+                                                    </h4>
+                                                }
+                                                else if (i % 4 == 3)
+                                                {
+                                                    <h4 class="purple">
+                                                        @Model.PackageList[i].TypeOfPackage
+                                                    </h4>
+                                                }
+
+                                                <p>Package Id : @Model.PackageList[i].PackageId</p>
+                                                <p>Date Of Booking : @Model.PackageList[i].StartDate</p>
+                                                <p>Package Ends On : @Model.PackageList[i].EndDate</p>
+                                                <p>Amount : @Model.PackageList[i].Amount Rs.</p>
+                                                <p>Remaining Service : @Model.PackageList[i].RemainingServices</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("input.form-control").addClass("readonlyField");
+            $(".nav-pills li:first-child a.headOne").focus();
+            $(".Packages").hide();
+            $(".Services").hide();
+
+            let flag = 0;
+            $(document.body).on("click", "#EditDetails", function () {
+                //alert("Hey")
+                if (flag == 0) {
+                    $("input.form-control").removeAttr("readonly");
+                    $("input.form-control").removeClass("readonlyField");
+                    flag = 1;
+                    $(this).text("Save Details");
+                    $("#submitChanges").attr("disabled", true);
+                } else {
+                    $("input.form-control").attr("readonly", true);
+                    $("input.form-control").addClass("readonlyField");
+                    $(this).text("Edit Details");
+                    flag = 0;
+                    $("#submitChanges").removeAttr("disabled");
+                }
+            });
+
+            $(document.body).on("click", "#Services", function () {
+                //alert("Hey")
+                $(".Services").show();
+                $(".Profile").hide();
+                $(".Packages").hide();
+            });
+
+            $(document.body).on("click", "#Profile", function () {
+                //alert("Hey")
+                $(".Profile").show();
+                $(".Packages").hide();
+                $(".Services").hide();
+            });
+
+            $(document.body).on("click", "#Packages", function () {
+                //alert("Hey")
+                $(".Packages").show();
+                $(".Profile").hide();
+                $(".Services").hide();
+            });
+        });
+    </script>
+</body>
+
+</html>
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/jquery")

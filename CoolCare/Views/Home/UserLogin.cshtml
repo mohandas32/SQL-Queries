@@ -1,0 +1,81 @@
+﻿@model CoolCare.Models.User
+
+@{
+    ViewBag.Title = "UserLogin";
+    Layout = "~/Views/Shared/FormLayout.cshtml";
+
+}
+@{
+    Html.RenderPartial("~/Views/Shared/HeaderPartialView.cshtml");
+}
+
+<link href="~/Content/CoolCare/css/UserLogin.css" rel="stylesheet" />
+
+<div class="container">
+    
+    @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "formUserLogin" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row needs-validation form-horizontal">
+            <h1 class="text-white" align="center">Login</h1>
+           
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="col-md-12 ">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-12 col-lg-12 mt-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-12 text-center mt-5">
+                @if (ViewBag.loginerror != null)
+                {
+                    <h3 align="center" class="text-danger">@ViewBag.loginerror</h3>
+                }
+                <button class="btn btn-primary px-3 py-2 submitButton mt-3" onclick="validation()" type="submit">
+                    Submit
+                    form
+                </button>
+            </div>
+        </div>
+        <div>
+            <p class="mb-0 text-center mt-3"><a href="@Url.Action("ForgotPassword","Forget")" class="createAccount text-white font-weight-bold">Forgot your password ?</a></p>
+        </div>
+        <div class="text-center mt-4">
+            <p><small class="text-white mr-2">Don't have an account ?</small> <a href="/Home/UserSignUp" class="createAccount text-white font-weight-bold">Create an account</a></p>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+</div>
+
+@{
+    Html.RenderPartial("~/Views/Shared/FooterPartialView.cshtml");
+}
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/jquery")
+
+@*<script type="text/javascript">
+    function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };
+</script>*@

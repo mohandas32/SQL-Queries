@@ -1,0 +1,260 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+#bgVideo {
+    position: fixed;
+    left: 0;
+    top: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1000;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+label {
+    font-size: 20px;
+    margin-top: 35px;
+    color: white;
+}
+
+.valid-feedback, .invalid-feedback {
+    font-weight: 600;
+    font-size: 17px !important;
+}
+
+input#invalidCheck {
+    margin-top: 40px;
+    margin-right: 20px;
+}
+
+/*form {
+    width: 70%;
+    background-color: rgb(0 0 0 / 60%);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(25px);*/
+/*border: 2px solid rgba(255,255,255,0.1);*/
+/*box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}*/
+
+
+label#cash, label#online {
+    border-radius: 4px;
+    margin-top: 5px;
+    padding: 10px;
+}
+
+
+input[type="radio"] {
+    display: none;
+}
+
+    input[type="radio"] + label,
+    select {
+        display: inline-block;
+        width: 50%;
+        text-align: center;
+        float: left;
+        border-radius: 0;
+    }
+
+        input[type="radio"] + label:first-of-type {
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+
+        input[type="radio"] + label:last-of-type {
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+
+        input[type="radio"] + label i {
+            padding-right: 0.4em;
+        }
+
+        input[type="radio"]:checked + label,
+        input:checked + label:before,
+        select:focus,
+        select:active {
+            font-size: 22px;
+            font-weight: 600;
+            transition: all 0.4s;
+            background-color: #f50514;
+            color: #fff;
+            border-color: #f50514;
+        }
+
+        input,
+        input[type="radio"] + label:before,
+        select option,
+        select {
+            width: 100%;
+            padding: 1em;
+            line-height: 1.4;
+            background-color: #f9f9f9;
+            border: 1px solid #e5e5e5;
+            border-radius: 3px;
+            -webkit-transition: 0.35s ease-in-out;
+            -moz-transition: 0.35s ease-in-out;
+            -o-transition: 0.35s ease-in-out;
+            transition: 0.35s ease-in-out;
+            transition: all 0.35s ease-in-out;
+        }
+
+
+
+input {
+    background-color: rgba(255, 255, 255, 0.18) !important;
+    font-size: 20px !important;
+    color: white !important;
+    border: none !important;
+}
+
+textarea#validationCustom03 {
+    background-color: rgba(255, 255, 255, 0.18) !important;
+    font-size: 20px !important;
+    color: white !important;
+    border: none !important;
+}
+
+.TechWorkDoneReport {
+    width: 70%;
+    background-color: rgb(0 0 0 / 60%) !important;
+    border-radius: 10px;
+    backdrop-filter: blur(25px) !important;
+    margin-top: 200px;
+    margin-bottom: 100px;
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+    padding: 50px 35px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    background-color: rgba(255,255,255,0.18) !important;
+    font-size: 20px !important;
+    color: white !important;
+    border: none !important;
+}
+
+h1 {
+    color: white;
+    /* border-bottom: red !important; */
+}
+
+.submitButton {
+    background-color: #f50514;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+}
+
+.submitButton {
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    background: none !important;
+    border: none;
+    border-radius: 0px !important;
+    border-bottom: 2px solid #f50514 !important;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #fff;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.8s;
+    transition-duration: 0.8s;
+}
+
+    .submitButton:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #da000f;
+        color: white;
+        border: none;
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: 0 50%;
+        transform-origin: 0 50%;
+        -webkit-transition-property: transform;
+        transition-property: transform;
+        -webkit-transition-duration: 0.8s;
+        transition-duration: 0.8s;
+        -webkit-transition-timing-function: ease-out;
+        transition-timing-function: ease-out;
+    }
+
+    .submitButton:hover, .submitButton:focus, .submitButton:active {
+        color: white;
+    }
+
+        .submitButton:hover:before, .submitButton:focus:before, .btn-get-started:active:before {
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+        }
+
+@media only screen and (min-width: 400px) and (max-width: 768px) {
+    .TechWorkDoneReport {
+        width: 80%;
+        margin-top: 150px !important;
+        left: 0%;
+    }
+
+    .row {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+
+    lable {
+        font-size: 10px !important;
+    }
+}
+
+@media only screen and (min-width: 270px) and (max-width: 400px) {
+    .TechWorkDoneReport {
+        width: 100%;
+        margin-top: 150px !important;
+        padding: 12px;
+    }
+
+    .valid-feedback, .invalid-feedback {
+        font-weight: 500;
+        font-size: 15px !important;
+    }
+
+    .tncLable {
+        margin-top: 0px;
+    }
+
+    .row {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+
+    .submitButton {
+        font-size: 15px;
+    }
+
+    label {
+        font-size: 15px !important;
+    }
+
+    .container {
+        padding: 0px;
+    }
+}

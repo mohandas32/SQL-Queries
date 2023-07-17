@@ -1,0 +1,120 @@
+﻿@model CoolCare.Models.Bookservice
+
+@{
+    ViewBag.Title = "UserService";
+    Layout = "~/Views/Shared/FormLayout.cshtml";
+
+}
+@{
+    Html.RenderPartial("~/Views/Shared/HeaderPartialView.cshtml");
+}
+
+
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/jquery")
+<link href="~/Content/CoolCare/css/UserService.css" rel="stylesheet" />
+
+<div class="container">
+    @using (Html.BeginForm("Bookservice", "Services", FormMethod.Post, new { @class = "formUserService" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row needs-validation form-horizontal ">
+            <h4 class="text-white">BookService</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="col-md-12 ">
+                <div class="form-group">
+                    <label for="Address" class="form-label">Address</label>
+
+                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                    @*@Html.TextArea("Description", "", new { @class = "AddressTextarea form-control" })*@
+
+                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+
+           
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="TypeOfAC" class="form-label">Type Of Air Conditioner</label>
+                    @Html.DropDownList("TypeOfAC", new List<SelectListItem>
+        { new SelectListItem { Text = "Split AC", Value = "Split AC" },
+        new SelectListItem { Text = "Window AC", Value = "Window AC" },
+        new SelectListItem { Text = "Cassette AC", Value = "Cassette AC" } ,
+        new SelectListItem { Text = "Ductable/Central AC", Value = "Ductable/Central AC" } ,
+        }, "Select TypeOfAC", new { @class = "form-control" })
+
+                    @*@Html.EditorFor(model => model.TypeOfAC, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TypeOfAC, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="NumberOfAC" class="form-label">Number Of AC</label>
+                    @*@Html.LabelFor(model => model.NumberOfAC, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    @Html.DropDownList("NumberOfAC", new List<SelectListItem>
+                      { new SelectListItem { Text = "1", Value = "1" },
+                          new SelectListItem { Text = "2", Value = "2" },
+                          new SelectListItem { Text = "3", Value = "3" } ,
+                          new SelectListItem { Text = "4", Value = "4" } ,
+                          new SelectListItem { Text = "5", Value = "5" },
+                           new SelectListItem { Text = "6", Value = "6" },
+                            new SelectListItem { Text = "7", Value = "7" },
+                             new SelectListItem { Text = "8", Value = "8" },
+                              new SelectListItem { Text = "9", Value = "9" },
+                               new SelectListItem { Text = "10", Value = "10" },
+                                new SelectListItem { Text = "11-20", Value = "11-20" },
+                                new SelectListItem { Text = "21-30", Value = "21-30" },
+                                new SelectListItem { Text = "31-50", Value = "31-50" },
+                                new SelectListItem { Text = "51-100", Value = "51-100" },
+                                new SelectListItem { Text = "100+", Value = "100+" },
+
+
+                      }, "Select NumberOfAC", new { @class = "form-control" })
+                    @*@Html.EditorFor(model => model.NumberOfAC, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NumberOfAC, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="form-group">
+
+                    @*@Html.LabelFor(model => model.TypeOfService, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label for="TypeOfService" class="form-label">Types Of Service</label>
+
+                    @Html.DropDownList("TypeOfService", new SelectList(Model.serviceList, "Id", "ServiceName"), "Select TypeOfService", new { @class = "form-control" })
+
+                    @*@Html.EditorFor(model => model.TypeOfService, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TypeOfService, "", new { @class = "text-danger" })*@
+
+                </div>
+            </div>
+
+            <div class="col-12 text-center mt-5">
+                <button class="btn btn-primary px-3 py-2 submitButton mt-3" onclick="validation()" type="submit">
+                    Submit
+                    form
+                </button>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>
+
+
+@{
+    Html.RenderPartial("~/Views/Shared/FooterPartialView.cshtml");
+}
+
+
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/jquery")

@@ -1,0 +1,796 @@
+﻿@model CoolCare.Models.Package
+
+
+@{
+    ViewBag.Title = "BookAMC";
+    Layout = "~/Views/Shared/FormLayout.cshtml";
+
+}
+@{
+    Html.RenderPartial("~/Views/Shared/HeaderPartialView.cshtml");
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Latest compiled and minified CSS -->
+    <link href="files/bootstrapCss.css" rel="stylesheet">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="files/bootstrapJs.js"></script>
+
+    <!-- JQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" href="TechPersonalDetails.css" /> -->
+    <link href="~/Content/CoolCare/css/FormAMC.css" rel="stylesheet" />
+    <title>AMC Form</title>
+</head>
+
+<body>
+  
+    <div class="container mt-5">
+        <div class="formBody pt-5">
+        
+
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="~/Content/CoolCare/assets/img/ImgForAMC.png" class="imgClass" width="100%" alt="">
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <h1>
+                            AC AMC
+                        </h1>
+                        <h5 class="mt-4">
+                            Ensure your window, split, and cassette air conditioners are in top condition with our
+                            annual AMC service that includes 4 jet pump services. Our team is always ready to provide
+                            immediate response and can accommodate short notice requests for any AC maintenance needs.
+                            Trust us to keep your AC units running smoothly all year round.
+                        </h5>
+                    </div>
+                    @*<form class="validation py-5"  action="/Payment/Initiatepayment" novalidate>*@
+                    @using( Html.BeginForm("BookAMC", "Home", FormMethod.Post))
+                    {
+                        <div class="row ">
+                            <div class="col-lg-3 sm-12">
+                                <label for="validationCustom09" class="form-label">Unit Type</label>
+                            </div>
+                            <div class="col-lg-9 sm-12">
+                               
+                                @Html.DropDownList("UnitType", new List<SelectListItem>
+                                  { new SelectListItem { Text = "Split AC", Value = "Split AC", Selected = true },
+                                  new SelectListItem { Text = "Window AC", Value = "Window AC" },
+                                  new SelectListItem { Text = "Cassette AC", Value = "Cassette AC" } 
+                                  }, "Select UnitType", new { @class = "form-control" })
+
+                                <div class="invalid-feedback">
+                                    Please select a valid type.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-5">
+                            <div class="col-lg-3 sm-12">
+                                <label for="validationCustom09" class="form-label">Unit Capacity</label>
+                            </div>
+                            <div class="col-lg-9 sm-12">
+                               
+                                @Html.DropDownList("UnitCapacity", new List<SelectListItem>
+                             {
+                             new SelectListItem { Text = "0.5 Ton", Value = "0.5 Ton" },
+                             new SelectListItem { Text = "1.0 Ton", Value = "1.0 Ton" } ,
+                             new SelectListItem { Text = "1.5 Ton", Value = "1.5 Ton" } ,
+                             new SelectListItem { Text = "2.0 Ton", Value = "2.0 Ton" } ,
+                             new SelectListItem { Text = "3.0 Ton", Value = "3.0 Ton" },
+                             new SelectListItem { Text = "3.5 Ton", Value = "3.5 Ton" },
+                             new SelectListItem { Text = "4.0 Ton", Value = "4.0 Ton" }
+
+                             }, "Select Unit Capacity", new { @class = "form-control" })
+                                <div class="invalid-feedback">
+                                    Please select a valid type.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-5 justify-content-center">
+                            <div class="col-md-9 text-center">
+                                <label for="AMCType" class="form-label">AMC Type</label>
+                                <div class="input-group">
+
+
+                                    @Html.RadioButton("Payment", "Comprehensive", false, new { id = "Comprehensive" })
+                                    @Html.Label("Comprehensive", "Comprehensive", new { @for = "Comprehensive" })
+
+                                    @Html.RadioButton("Payment", "NonComprehensive", false, new { id = "NonComprehensive" })
+                                    @Html.Label("NonComprehensive", "Non Comprehensive", new { @for = "NonComprehensive" })
+                                </div>
+                                <br />
+                                <br />
+                                <label>Package Amount In Rs. :-</label>
+                                @*<input type="text" id="amount" name="amount" readonly />*@
+                                @Html.EditorFor(m => m.Amount , new { htmlAttributes = new { @readonly = "readonly" } })
+
+                                <script>
+                                    $(document).ready(function () {
+
+                                        $("input[id='Comprehensive']").click(function () {
+
+                                            let actype =$("#UnitType").val()
+                                            let capacity =$("#UnitCapacity").val()
+
+                                            //for split Ac and comprehensive
+                                            if (actype == "Split AC" && capacity == "0.5 Ton") {
+                                                $("input[name='Amount']").val(2500)
+                                            }
+                                            else if (actype == "Split AC" && capacity == "1.0 Ton") {
+                                                $("input[name='Amount']").val(2800)
+                                            }
+                                            else if (actype == "Split AC" && capacity == "1.5 Ton") {
+                                                $("input[name='Amount']").val(3000)
+                                            }
+                                            else if (actype == "Split AC" && capacity == "2.0 Ton") {
+                                                $("input[name='Amount']").val(3200)
+                                            }
+                                            else if (actype == "Split AC" && capacity == "3.0 Ton") {
+                                                $("input[name='Amount']").val(4000)
+                                            }
+                                            else if (actype == "Split AC" && capacity == "3.5 Ton") {
+                                                $("input[name='Amount']").val(4200)
+                                            }
+                                            else if (actype == "Split AC" && capacity == "4.0 Ton") {
+                                                $("input[name='Amount']").val(5000)
+                                            }
+
+                                            //for window Ac
+
+                                            else if (actype == "Window AC" && capacity == "0.5 Ton") {
+                                                $("input[name='Amount']").val(2200)
+                                            }
+                                            else if (actype == "Window AC" && capacity == "1.0 Ton") {
+                                                $("input[name='Amount']").val(2600)
+                                            }
+                                            else if (actype == "Window AC" && capacity == "1.5 Ton") {
+                                                $("input[name='Amount']").val(2800)
+                                            }
+                                            else if (actype == "Window AC" && capacity == "2.0 Ton") {
+                                                $("input[name='Amount']").val(3000)
+                                            }
+                                            else if (actype == "Window AC" && capacity == "3.0 Ton") {
+                                                $("input[name='Amount']").val(3800)
+                                            }
+                                            else if (actype == "Window AC" && capacity == "3.5 Ton") {
+                                                $("input[name='Amount']").val(4000)
+                                            }
+                                            else if (actype == "Window AC" && capacity == "4.0 Ton") {
+                                                $("input[name='Amount']").val(4800)
+                                            }
+
+                                            //for cassette Ac
+                                            else if (actype == "Cassette AC" && capacity == "0.5 Ton") {
+                                                $("input[name='Amount']").val(3500)
+                                            }
+                                            else if (actype == "Cassette AC" && capacity == "1.0 Ton") {
+                                                $("input[name='Amount']").val(3800)
+                                            }
+                                            else if (actype == "Cassette AC" && capacity == "1.5 Ton") {
+                                                $("input[name='Amount']").val(4200)
+                                            }
+                                            else if (actype == "Cassette AC" && capacity == "2.0 Ton") {
+                                                $("input[name='Amount']").val(4700)
+                                            }
+                                            else if (actype == "Cassette AC" && capacity == "3.0 Ton") {
+                                                $("input[name='Amount']").val(5200)
+                                            }
+                                            else if (actype == "Cassette AC" && capacity == "3.5 Ton") {
+                                                $("input[name='Amount']").val(6000)
+                                            }
+                                            else if (actype == "Cassette AC" && capacity == "4.0 Ton") {
+                                                $("input[name='Amount']").val(6800)
+                                            }
+
+                                        });
+
+                                        $("input[id='NonComprehensive']").click(function () {
+                                            let actype = $("#UnitType").val()
+                                            let capacity = $("#UnitCapacity").val()
+
+                                            //for split Ac and comprehensive
+                                            if (actype == "Split AC" && capacity == "0.5 Ton") {
+                                                $("input[name='Amount']").val(1250)
+                                            }
+                                            else if (actype == "Split AC" && capacity == "1.0 Ton") {
+                                                $("input[name='Amount']").val(1500)
+                                            }
+                                            else if (actype == "Split AC" && capacity == "1.5 Ton") {
+                                                $("input[name='Amount']").val(1800)
+                                            }
+                                            else if (actype == "Split AC" && capacity == "2.0 Ton") {
+                                                $("input[name='Amount']").val(2000)
+                                            }
+                                            else if (actype == "Split AC" && capacity == "3.0 Ton") {
+                                                $("input[name='Amount']").val(2800)
+                                            }
+                                            else if (actype == "Split AC" && capacity == "3.5 Ton") {
+                                                $("input[name='Amount']").val(3200)
+                                            }
+                                            else if (actype == "Split AC" && capacity == "4.0 Ton") {
+                                                $("input[name='Amount']").val(3500)
+                                            }
+
+                                            //for window Ac
+
+                                            else if (actype == "Window AC" && capacity == "0.5 Ton") {
+                                                $("input[name='Amount']").val(1100)
+                                            }
+                                            else if (actype == "Window AC" && capacity == "1.0 Ton") {
+                                                $("input[name='Amount']").val(1200)
+                                            }
+                                            else if (actype == "Window AC" && capacity == "1.5 Ton") {
+                                                $("input[name='Amount']").val(1500)
+                                            }
+                                            else if (actype == "Window AC" && capacity == "2.0 Ton") {
+                                                $("input[name='Amount']").val(1800)
+                                            }
+                                            else if (actype == "Window AC" && capacity == "3.0 Ton") {
+                                                $("input[name='Amount']").val(2200)
+                                            }
+                                            else if (actype == "Window AC" && capacity == "3.5 Ton") {
+                                                $("input[name='Amount']").val(2800)
+                                            }
+                                            else if (actype == "Window AC" && capacity == "4.0 Ton") {
+                                                $("input[name='Amount']").val(3000)
+                                            }
+
+                                            //for cassette Ac
+                                            else if (actype == "Cassette AC" && capacity == "0.5 Ton") {
+                                                $("input[name='Amount']").val(2000)
+                                            }
+                                            else if (actype == "Cassette AC" && capacity == "1.0 Ton") {
+                                                $("input[name='Amount']").val(2500)
+                                            }
+                                            else if (actype == "Cassette AC" && capacity == "1.5 Ton") {
+                                                $("input[name='Amount']").val(2800)
+                                            }
+                                            else if (actype == "Cassette AC" && capacity == "2.0 Ton") {
+                                                $("input[name='Amount']").val(3200)
+                                            }
+                                            else if (actype == "Cassette AC" && capacity == "3.0 Ton") {
+                                                $("input[name='Amount']").val(3700)
+                                            }
+                                            else if (actype == "Cassette AC" && capacity == "3.5 Ton") {
+                                                $("input[name='Amount']").val(4000)
+                                            }
+                                            else if (actype == "Cassette AC" && capacity == "4.0 Ton") {
+                                                $("input[name='Amount']").val(5200)
+                                            }
+
+                                        });
+                                    })
+                                </script>
+
+                            </div>
+                        </div>
+
+                        <div class="row mt-5 justify-content-center">
+                            <div class="col-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                    <label class="form-check-label text-danger fw-bold" for="invalidCheck">
+                                        AMC Terms And Condition*
+                                    </label>
+                                    <div class="invalid-feedback">
+                                        You must agree before submitting.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-5">
+                            <div class="col-12 text-center mt-4 mb-5">
+                                <button class="btn btn-primary px-3 py-2 submitButton"
+                                        type="submit">
+                                    Book Your Package
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+
+        <!-- <div class="text-center mt-3 mb-5">
+            <h1 align="center" class="mt-5 description">DESCRIPTION</h1>
+
+        </div> -->
+        <!-- <h1 align="center" class="mt-5 description"></h1> -->
+
+        <div id="myGroup" class="mt-5">
+            <p class="text-center">
+                <a class="btn btn-dark" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                   aria-expanded="false" aria-controls="collapseExample">
+                    Non Comprehensive
+                </a>
+                <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2"
+                        aria-expanded="false" aria-controls="collapseExample2">
+                    Comprehensive
+                </button>
+            </p>
+
+            <div class="collapse" id="collapseExample" data-bs-parent="#myGroup">
+                <div class="card card-body">
+                    <div class="vc_tta-panel-body" style="">
+                        <div class="vc_empty_space" style="height: 32px">
+                            <span class="vc_empty_space_inner"></span>
+                        </div>
+                        <div class="info-box-wrapper">
+                            <div id="wd-5fc3ea105092d"
+                                 class=" wd-rs-5fc3ea105092d wd-info-box wd-wpb text-center box-icon-align-top box-style- color-scheme- wd-bg-none ">
+                                <div class="box-icon-wrapper  box-with-icon box-icon-simple">
+                                    <div class="info-box-icon">
+                                        <img class="info-icon image-1 "
+                                             src="https://i0.wp.com/24sevendays.com/wp-content/uploads/2020/11/Maintenances-Contract-150x150.png"
+                                             width="150" height="150" alt="Maintenances Contract"
+                                             title="Maintenances Contract">
+                                    </div>
+                                </div>
+                                <div class="info-box-content">
+                                    <div class="info-box-subtitle subtitle-color-default wd-fontsize-xs subtitle-style-default wd-font-weight-">
+                                        Non Comprehensive Maintenance Contract
+                                    </div>
+                                    <h5 class="info-box-title title wd-font-weight- box-title-style-default wd-fontsize-m">
+                                        Immediately response at short notice.
+                                    </h5>
+                                    <div class="info-box-inner set-cont-mb-s reset-last-child">
+                                        <h4 style="text-align: center;">
+                                            AMC: Annual Maintenances Contract AMC Contract
+                                            includes one year and four time service &amp; complaint.
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vc_empty_space" style="height: 32px">
+                            <span class="vc_empty_space_inner"></span>
+                        </div>
+                        <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                            <div class="wpb_column vc_column_container vc_col-sm-6">
+                                <div class="vc_column-inner">
+                                    <div class="wpb_wrapper">
+                                        <div class="wpb_text_column wpb_content_element">
+                                            <div class="wpb_wrapper">
+                                                <h2>Includes:</h2>
+                                            </div>
+                                        </div>
+                                        <ul class=" wd-rs-5fcb45a44351d wd-list wd-wpb color-scheme- wd-fontsize-xs wd-list-type-icon wd-list-style-default wd-justify-left "
+                                            id="wd-5fcb45a44351d">
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Four routine services</span>
+                                            </li>
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">
+                                                    Immediate attendance of breakdown, if
+                                                    any
+                                                </span>
+                                            </li>
+                                        </ul>
+                                        <div class="wpb_text_column wpb_content_element">
+                                            <div class="wpb_wrapper">
+                                                <h2>Extra Chargeable Excludes:</h2>
+                                            </div>
+                                        </div>
+                                        <ul class=" wd-rs-5fc3eabab8b49 wd-list wd-wpb color-scheme- wd-fontsize-xs wd-list-type-icon wd-list-style-default wd-justify-left "
+                                            id="wd-5fc3eabab8b49">
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Plastic Items</span>
+                                            </li>
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Air filter</span>
+                                            </li>
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Sheet Metal Parts</span>
+                                            </li>
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Condenser &amp; Evaporator Coils</span>
+                                            </li>
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Voltage Stabilizers &amp; Scanners</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wpb_column vc_column_container vc_col-sm-6">
+                                <div class="vc_column-inner">
+                                    <div class="wpb_wrapper">
+                                        <ul class=" wd-rs-5fc3eb1ade1dc wd-list wd-wpb color-scheme- wd-fontsize-xs wd-list-type-icon wd-list-style-default wd-justify-left "
+                                            id="wd-5fc3eb1ade1dc">
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Circuit Breaker</span>
+                                            </li>
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Thermocol Parts</span>
+                                            </li>
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Compressor</span>
+                                            </li>
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Refrigerant Gas Charging</span>
+                                            </li>
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Fan Motor</span>
+                                            </li>
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Magnetic Switch</span>
+                                            </li>
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Transformer</span>
+                                            </li>
+                                        </ul>
+                                        <div class="wpb_text_column wpb_content_element">
+                                            <div class="wpb_wrapper">
+                                                <p>
+                                                    <strong>Extra Charges-:</strong><br>
+                                                    No Warranty for Air-condition’s Electric Part ,Gas Charging,
+                                                    Compressor, plastic Part &amp; Aluminum coil
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="collapse" id="collapseExample2" data-bs-parent="#myGroup">
+                <div class="card card-body">
+                    <div class="vc_tta-panel-body" style="">
+                        <div class="vc_empty_space" style="height: 32px">
+                            <span class="vc_empty_space_inner"></span>
+                        </div>
+                        <div class="info-box-wrapper">
+                            <div id="wd-5fc2bc57dcbce"
+                                 class=" wd-rs-5fc2bc57dcbce wd-info-box wd-wpb text-center box-icon-align-top box-style- color-scheme- wd-bg-none ">
+                                <div class="box-icon-wrapper  box-with-icon box-icon-simple">
+                                    <div class="info-box-icon">
+                                        <img class="info-icon image-1 "
+                                             src="https://i0.wp.com/24sevendays.com/wp-content/uploads/2020/11/Maintenances-Contract-150x150.png"
+                                             width="150" height="150" alt="Maintenances Contract"
+                                             title="Maintenances Contract">
+                                    </div>
+                                </div>
+                                <div class="info-box-content">
+                                    <div class="info-box-subtitle subtitle-color-default wd-fontsize-xs subtitle-style-default wd-font-weight-">
+                                        Comprehensive Maintenance Contract
+                                    </div>
+                                    <h4 class="info-box-title title wd-font-weight- box-title-style-default wd-fontsize-m">
+                                        Immediately response at short notice.
+                                    </h4>
+                                    <div class="info-box-inner set-cont-mb-s reset-last-child">
+                                        <h4 style="text-align: center;">
+                                            CMC contract include one year warranty for
+                                            air-conditions, electric parts, gas charging &amp; compressor with four
+                                            times service &amp; complaint.
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vc_empty_space" style="height: 32px">
+                            <span class="vc_empty_space_inner"></span>
+                        </div>
+                        <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                            <div class="wpb_column vc_column_container vc_col-sm-6">
+                                <div class="vc_column-inner">
+                                    <div class="wpb_wrapper">
+                                        <div class="wpb_text_column wpb_content_element">
+                                            <div class="wpb_wrapper">
+                                                <h2>Includes:</h2>
+                                            </div>
+                                        </div>
+                                        <ul class=" wd-rs-5fc2ba1f16733 wd-list wd-wpb color-scheme- wd-fontsize-xs wd-list-type-icon wd-list-style-default wd-justify-left "
+                                            id="wd-5fc2ba1f16733">
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Four routine services</span>
+                                            </li>
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">
+                                                    Immediate attendance of breakdown, if
+                                                    any
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Refrigerant gas charging, if necessary</span>
+                                            </li>
+                                        </ul>
+                                        <div class="wpb_text_column wpb_content_element">
+                                            <div class="wpb_wrapper">
+                                                <h2>Extra Chargeable Excludes:</h2>
+                                            </div>
+                                        </div>
+                                        <ul class=" wd-rs-5fc2bb6113a1d wd-list wd-wpb color-scheme- wd-fontsize-xs wd-list-type-icon wd-list-style-default wd-justify-left "
+                                            id="wd-5fc2bb6113a1d">
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Plastic Items</span>
+                                            </li>
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Air filter</span>
+                                            </li>
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Voltage Stabilizers &amp; Scanners</span>
+                                            </li>
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Circuit breaker</span>
+                                            </li>
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Thermocol Parts</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wpb_column vc_column_container vc_col-sm-6">
+                                <div class="vc_column-inner">
+                                    <div class="wpb_wrapper">
+                                        <div class="wpb_text_column wpb_content_element">
+                                            <div class="wpb_wrapper">
+                                                <h2>
+                                                    Spare parts shall be replaced/repair, free of cost in case of any
+                                                    breakdown during AMC period
+                                                </h2>
+                                            </div>
+                                        </div>
+                                        <ul class=" wd-rs-5fc2bad14de05 wd-list wd-wpb color-scheme- wd-fontsize-xs wd-list-type-icon wd-list-style-default wd-justify-left "
+                                            id="wd-5fc2bad14de05">
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Compressor</span>
+                                            </li>
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Fan Motor</span>
+                                            </li>
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">C.B.</span>
+                                            </li>
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Magnetic Switch</span>
+                                            </li>
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Transformer</span>
+                                            </li>
+                                            <li>
+                                                <span class="list-icon far fa-arrow-alt-circle-right"></span>
+                                                <span class="list-content">Condenser &amp; Evaporator Coils</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-6 descriptionBody">
+                <img src="https://i0.wp.com/24sevendays.com/wp-content/uploads/2021/02/ac-rent-400x400.png" width="60%"
+                     alt="">
+            </div>
+            <div class="col-6 descriptionBody">
+                <div>
+                    <h3>Home, Office, Shop</h3>
+                    <h1 class="amcHeadline mt-4">Air Conditioner AMC Service</h1>
+                    <h5 class="mt-4">
+                        Air Conditioner AMC Service, Affordable, Reasonable, Split, Window and
+                        Cassette Air
+                        Conditioner
+                        Tune-up by Expert, Your air conditioner runs at peak performance for years.
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <hr class="my-5">
+        <div class="row mt-5">
+            <div class="col-6 descriptionBody">
+                <div>
+                    <h3>Affordable</h3>
+                    <h1 class="amcHeadline mt-4">Air Conditioner AMC Service</h1>
+                    <h5 class="mt-4">
+                        Now no more expenses for ac maintenance, no more waiting for ac repair
+                        team, If
+                        there is any breakdown, we help you every step of the way, we are here for immediate
+                        response at
+                        short notice.
+
+                        We are just a call away from you, We provide service within few hours and that too
+                        at your
+                        doorstep.
+                    </h5>
+                </div>
+            </div>
+            <div class="col-6 descriptionBody">
+                <img src="https://i0.wp.com/24sevendays.com/wp-content/uploads/2021/02/Split-and-Window-AC-on-Rent-400x400.png"
+                     width="60%" alt="">
+            </div>
+        </div>
+
+
+
+
+        <!-- Modal trigger button -->
+        <div class="text-center mt-5">
+            <button type="button" class="ServiceTerms mb-5" data-bs-toggle="modal" data-bs-target="#modalId">
+                Service terms
+            </button>
+        </div>
+
+        <!-- Modal Body -->
+        <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+        <div class="modal fade" id="modalId" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document">
+                <div class="modal-content">
+                    <!-- <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div> -->
+                    <div class="modal-body">
+                        <div>
+                            <div>
+                                <div>
+                                    <div>
+                                        <div>
+                                            <h4 class="mb-5"><strong>Service Terms</strong></h4>
+                                            <h5>
+                                                The terms and conditions that are listed below are applicable for all
+                                                the services provided by Cool Care. It is required by you to read
+                                                the terms and conditions before continuing to the site or services.
+                                            </h5>
+                                        </div>
+                                    </div>
+                                    <h4 class="my-5">
+                                        <strong>
+                                            By accepting the terms and conditions you give
+                                            us the permission
+                                        </strong>
+                                    </h4>
+                                    <div>
+                                        <h5>
+                                            (a) Cool Care use your personal information for offer or promotional
+                                            purpose.
+                                        </h5>
+                                        <h5>(b) To store your information purely for business purpose.</h5>
+                                        <h5>
+                                            (c) To invite you to participate in contests and other consumer awareness
+                                            programs.
+                                        </h5>
+                                    </div>
+                                    <h4 class="my-5">
+                                        <strong>
+                                            By allowing you access to our site we are
+                                            giving you the right to
+                                        </strong>
+                                    </h4>
+                                    <div>
+                                        <h5>
+                                            (a) Access information related to our service offering.
+                                        </h5>
+                                        <h5>
+                                            (b) Avail the offers and discounts that we will be introducing from time to
+                                            time through the newsletter or promotional mails.
+                                        </h5>
+                                        <h5>
+                                            (c) Use our content in a manner that it is not considered violation of
+                                            content copyright.
+                                        </h5>
+                                    </div>
+                                    <h4 class="my-5"><strong>Terms and Definitions</strong></h4>
+                                    <div>
+                                        <h5>
+                                            (a) User means any person (individual or company) who uses our website;
+                                            however, may or may not carry a transaction.
+                                        </h5>
+                                        <h5>
+                                            (b) Consumer means any individual who consumes our service having
+                                            subscribed to it.
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    @*<script src="files/formValidation.js"></script>*@
+</body>
+
+</html>
+
+
+
+@*@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>BookAmc</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.UnitType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UnitType, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UnitType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UnitCapacity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UnitCapacity, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UnitCapacity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AmcType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AmcType, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AmcType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+
+@{
+    Html.RenderPartial("~/Views/Shared/FooterPartialView.cshtml");
+}
+
+<script>
+    document.getElementById("bgVideo").style.display = "none";
+</script>

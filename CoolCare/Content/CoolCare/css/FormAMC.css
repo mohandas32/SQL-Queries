@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.ServiceTerms {
+    padding: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.formBody {
+    background-color: rgba(205, 226, 237, 0.55);
+    padding-right: 10px;
+}
+
+/* .row>* {
+    padding-left: 0px;
+} */
+
+.imgClass {
+    position: sticky;
+    top: 0;
+}
+.formBody.pt-5 {
+    margin-top: 99px;
+}
+
+
+.description{
+    font-size: 60px;
+    color: #da000f;
+}
+
+
+#bgVideo {
+    position: fixed;
+    left: 0;
+    top: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1000;
+}
+
+
+label {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    margin-top: 10px;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+select {
+    margin-top: 12px;
+    margin-left: -10px;
+}
+
+.valid-feedback,
+.invalid-feedback {
+    font-weight: 600;
+    font-size: 17px !important;
+}
+
+/* .unitType{
+    display: flex;
+    justify-content: space-evenly;
+} */
+
+form {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    backdrop-filter: blur(25px);
+    box-shadow: 0 0 10px rgba(8, 7, 16, 0.6);
+    margin-top: 80px;
+}
+
+input,
+select {
+    background-color: rgba(0, 0, 0, 0.18) !important;
+    font-size: 20px !important;
+    color: rgb(0, 0, 0) !important;
+    border: none !important;
+}
+
+option {
+    background-color: rgba(255, 255, 255, 0.77) !important;
+    border: none !important;
+}
+
+.amcHeadline {
+    color: #ff5f19;
+}
+
+.descriptionBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ServiceTerms {
+    background-color: rgb(0, 0, 151);
+    color: white;
+    border: none;
+}
+
+h1 {
+    color: rgb(0, 0, 0);
+    /* border-bottom: red !important; */
+}
+
+.submitButton {
+    background-color: #f50514;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+}
+
+.submitButton {
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    background: none !important;
+    border: none;
+    border-radius: 0px !important;
+    border-bottom: 2px solid #f50514 !important;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #000000;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.8s;
+    transition-duration: 0.8s;
+}
+
+.submitButton:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #da000f;
+    color: white;
+    border: none;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: 0 50%;
+    transform-origin: 0 50%;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.8s;
+    transition-duration: 0.8s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+.submitButton:hover,
+.submitButton:focus,
+.submitButton:active {
+    color: white;
+}
+
+.submitButton:hover:before,
+.submitButton:focus:before,
+.btn-get-started:active:before {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"]+label,
+select {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    float: left;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+input[type="radio"]+label:first-of-type {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+input[type="radio"]+label:last-of-type {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+input[type="radio"]+label i {
+    padding-right: 0.4em;
+}
+
+input[type="radio"]:checked+label,
+input:checked+label:before,
+select:focus,
+select:active {
+    /* font-size: 22px; */
+    /* font-weight: 600; */
+    transition: all 0.4s;
+    background-color: #f50514;
+    color: #fff;
+    border-color: #f50514;
+}
+
+input,
+input[type="radio"]+label:before,
+select option,
+select {
+    width: 100%;
+    padding: 1em;
+    line-height: 1.4;
+    background-color: #f9f9f9;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    -webkit-transition: 0.35s ease-in-out;
+    -moz-transition: 0.35s ease-in-out;
+    -o-transition: 0.35s ease-in-out;
+    transition: 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+}
+
+.check {
+    cursor: pointer;
+    position: relative;
+    margin: auto;
+    width: 18px;
+    height: 18px;
+    -webkit-tap-highlight-color: transparent;
+    transform: translate3d(0, 0, 0);
+}
+
+.check:before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(34, 50, 84, 0.03);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.check svg {
+    position: relative;
+    z-index: 1;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: #c8ccd4;
+    stroke-width: 1.5;
+    transform: translate3d(0, 0, 0);
+    transition: all 0.2s ease;
+}
+
+.check svg path {
+    stroke-dasharray: 60;
+    stroke-dashoffset: 0;
+}
+
+.check svg polyline {
+    stroke-dasharray: 22;
+    stroke-dashoffset: 66;
+}
+
+.check:hover:before {
+    opacity: 1;
+}
+
+.check:hover svg {
+    stroke: #4285f4;
+}
+
+#cbx:checked+.check svg {
+    stroke: #4285f4;
+}
+
+#cbx:checked+.check svg path {
+    stroke-dashoffset: 60;
+    transition: all 0.3s linear;
+}
+
+#cbx:checked+.check svg polyline {
+    stroke-dashoffset: 42;
+    transition: all 0.2s linear;
+    transition-delay: 0.15s;
+}
+
+
+/* @media only screen and (min-width: 400px) and (max-width: 768px) {
+    form {
+        width: 80%;
+        margin-top: 150px !important;
+    }
+
+    .row {
+        margin-left: 0px !important;
+    }
+
+}
+
+@media only screen and (min-width: 270px) and (max-width: 400px) {
+    form {
+        width: 100%;
+        margin-top: 150px !important;
+    }
+
+    .valid-feedback,
+    .invalid-feedback {
+        font-weight: 500;
+        font-size: 15px !important;
+    }
+
+    .row {
+        margin-left: 0px !important;
+    }
+} */

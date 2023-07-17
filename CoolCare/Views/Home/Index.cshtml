@@ -1,0 +1,579 @@
+﻿@model CoolCare.Models.Class1
+    ViewBag.Title = "Home Page";
+}
+
+@if ((bool)ViewBag.showAlert)
+{
+
+
+
+    <script src="~/Content/AdminDashboard/asset/vendor/jquery/jquery.min.js"></script>
+
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+        </symbol>
+        <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+        </symbol>
+        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+        </symbol>
+    </svg>
+
+
+
+    <div class="alertParent" style="display:none;">
+        <div class="alert mt-5 alert-success d-flex align-items-center justify-content-end CoolCareAlert" role="alert" style="width: 300px; position: fixed; top: 35px; right: 0; z-index: 10;">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill" /></svg>
+            <div>
+                Welcome, @Session["userName"]
+            </div>
+            <button type="button" class="btn-close ms-4" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        $(document).ready(function () {
+            $('.alertParent').show();
+            $('.alertParent').css("display", "block");
+            setTimeout(function () {
+                $('.alertParent').fadeOut('slow');
+                $('.alertParent').css("display", "none !important");
+            }, 5000);
+        });
+    </script>
+}
+
+else if (TempData["bookamcmsg"] != null)
+{
+
+    <script src="~/Content/AdminDashboard/asset/vendor/jquery/jquery.min.js"></script>
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+        </symbol>
+        <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+        </symbol>
+        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+        </symbol>
+    </svg>
+
+
+
+    <div class="alertParent" style="display:none;">
+        <div class="alert mt-5 alert-success d-flex align-items-center justify-content-end CoolCareAlert" role="alert" style="width: 300px; position: fixed; top: 35px; right: 0; z-index: 10;">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill" /></svg>
+            <div>
+                @TempData["bookamcmsg"]
+            </div>
+            <button type="button" class="btn-close ms-4" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        $(document).ready(function () {
+            $('.alertParent').show();
+            $('.alertParent').css("display", "block");
+            setTimeout(function () {
+                $('.alertParent').fadeOut('slow');
+                $('.alertParent').css("display", "none !important");
+            }, 5000);
+        });
+    </script>
+}
+
+else if (TempData["bookservicemsg"] != null)
+{
+
+    <script src="~/Content/AdminDashboard/asset/vendor/jquery/jquery.min.js"></script>
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+        </symbol>
+        <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+        </symbol>
+        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+        </symbol>
+    </svg>
+
+
+
+    <div class="alertParent" style="display:none;">
+        <div class="alert mt-5 alert-success d-flex align-items-center justify-content-end CoolCareAlert" role="alert" style="width: 380px; position: fixed; top: 35px; right: 0; z-index: 10;">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill" /></svg>
+            <div>
+                @TempData["bookservicemsg"]
+            </div>
+            <button type="button" class="btn-close ms-4" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        $(document).ready(function () {
+            $('.alertParent').show();
+            $('.alertParent').css("display", "block");
+            setTimeout(function () {
+                $('.alertParent').fadeOut('slow');
+                $('.alertParent').css("display", "none !important");
+            }, 5000);
+        });
+    </script>
+}
+
+
+
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="clearfix">
+
+    <div class="container" data-aos="fade-up">
+
+        <div class="row">
+
+            <div class="col-md-8 mt-5">
+                <div class="hero-info" data-aos="zoom-in" data-aos-delay="100">
+                    <h2>
+                        We Provide<br><span>AC Repair & Service</span>
+                        <br />
+                    </h2>
+                    <div class="mt-4">
+                        @if (Session["userid"] == null)
+                        {
+                            <a href="/Login/UserLogin" class="btn-get-started scrollto">Book Now</a>
+
+                        }
+                        else
+                        {
+                            <a href="/Home/BookService" class="btn-get-started scrollto">Book Now</a>
+
+                        }
+                        <a href="#services" class="btn-services scrollto">Our Services</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center">
+                <!-- <img src="assets/img/bg.jpg"  alt=""> -->
+                <img src="~/Content/CoolCare/assets/img/Logo.PNG" width="165%" alt="">
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+</section>
+<!-- End Hero Section -->
+
+<main id="main">
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="section-bg">
+        <div class="container" data-aos="fade-up">
+
+            <header class="section-header">
+                <h3>Services</h3>
+
+                <p>
+                    We are a team of specialists. We are your best and nearest option for fixing. Execution is our
+                    favorite, and we assist you right at your doorstep with trust as our top priority.
+                </p>
+            </header>
+
+            <div class="row justify-content-center">
+                @*@foreach (var i in Model)
+                    {*@
+
+                @foreach (var item in Model.Services)
+                {
+                    <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="box" style="padding: 18px;">
+                            @if (Session["userid"] == null)
+                            {
+
+                                <a href="/Login/UserLogin"><img src="~/Content/CoolCare/assets/img/acrepair.jpg" class="img-box" style="width: 100%;"></a>
+                                <a href="/Login/UserLogin">
+                                    <h4 class="title"
+                                        style="display: flex; justify-content: center;  margin: 15px; font-size: 28px;">
+
+                                        @item.ServiceName
+
+                                    </h4>
+
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="/Home/BookService">
+                                    <img src="~/Content/CoolCare/assets/img/acrepair.jpg" class="img-box" style="width: 100%;">
+                                </a>
+
+                                <a href="/Home/BookService">
+                                    <h4 class="title"
+                                        style="display: flex; justify-content: center;  margin: 15px; font-size: 28px;">
+
+                                        @item.ServiceName
+
+                                    </h4>
+                                </a>
+                            }
+                            <h5 class="Price" style="margin: 0;">
+                                @item.Price Rs.
+                            </h5>
+                            <h6 class="description" style="margin: 0;">
+                                @item.ServiceDescription
+                            </h6>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+
+        </div>
+    </section>
+    <!-- End Services Section -->
+
+
+    <!-- ======= Package Section ======= -->
+    <section id="Package" class="section-bg pt-5">
+        <div class="container" data-aos="fade-up">
+            <header class="section-header">
+                <h3>Package</h3>
+            </header>
+            <div class="row mt-5">
+                <div class="col-6 descriptionBody">
+                    <div>
+
+
+
+                        <h1 class="amcHeadline mt-4">Air Conditioner AMC Service</h1>
+                        <h5 class="mt-4">
+                            1. We specialize in providing unbeatable AMC contracts.<br /><br />
+                            2. Our top-notch contracts offer exceptional value for your investment.<br /><br />
+                            3. You can trust us for the best deal in the market.<br /><br />
+                            4. Choose us as your trusted partner for peace of mind and the best prices available.<br /><br />
+                            5. Our team consists of highly skilled specialists.<br /><br />
+                            6. We are your best and most convenient option for fixing.<br /><br />
+                            @*7. Execution is our specialty, and we excel at providing efficient solutions.<br /><br />
+                                8. We prioritize trust and strive to provide reliable service.<br /><br />*@
+                        </h5>
+                    </div>
+                </div>
+                <div class="col-6 descriptionBody">
+                    <img src="https://i0.wp.com/24sevendays.com/wp-content/uploads/2021/02/Split-and-Window-AC-on-Rent-400x400.png"
+                                                 width="60%" alt="">
+                </div>
+            </div>
+
+
+
+            <div class="text-center mt-5">
+
+                @if (Session["userid"] == null)
+                {
+                    <a href="/Login/UserLogin"><button type="button" class="ServiceTerms mb-5">Book Package</button></a> }
+                else
+                {
+                    <a href="/Home/BookAMC"><button type="button" class="ServiceTerms mb-5">Book Package</button></a>}
+            </div>
+        </div>
+    </section>
+    <!-- ======= About Section ======= -->
+    <section id="about">
+        <div class="container" data-aos="fade-up">
+
+            <header class="section-header">
+                <h3>About Us</h3>
+                <p>
+                    Our AC repair and service company is one of the most reputable. All brands of air conditioners
+                    are serviced by our experts at an affordable rate.
+                </p>
+            </header>
+
+            <div class="row about-container">
+
+                <div class="col-lg-6 content order-lg-1 order-2">
+                    <p>
+                        Our company is supported by a group of specialists. For any fix you need, we're your closest
+                        choice. We love executing and helping you at your doorstep, and we never compromise on
+                        quality.
+                    </p>
+
+                    <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                        <div class="icon"><i class="bi bi-card-checklist"></i></div>
+                        <h4 class="title"><a href="javascript:void(0);">Maintain a Check-List</a></h4>
+                        <p class="description">We maintain every AC repair service checklist for our customers</p>
+                    </div>
+
+                    <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                        <div class="icon"><i class="bi bi-brightness-high"></i></div>
+                        <h4 class="title"><a href="javascript:void(0);">On-Time AC Service</a></h4>
+                        <p class="description">Our team will be at your door as you contact us</p>
+                    </div>
+
+                    <div class="icon-box" data-aos="fade-up" data-aos-delay="300" style="display: none;">
+                        <div class="icon"><i class="bi bi-calendar4-week"></i></div>
+                        <h4 class="title"><a href="javascript:void(0);">Dolor Sitema</a></h4>
+                        <p class="description">
+                            Minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                            aliquip ex ea commodo consequat tarad limino ata
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6 background order-lg-2" data-aos="zoom-in">
+                    <img src="~/Content/CoolCare/assets/img/acabout.jpg" class="img-fluid" alt="">
+                </div>
+            </div>
+
+            <div class="row about-extra">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <img src="~/Content/CoolCare/assets/img/acabout2.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-6 pt-5 pt-lg-0" data-aos="fade-left">
+                    <h4>AC Service/Repair/Installation.</h4>
+                    <p>
+                        Our team of performance enthusiasts specialize in managing and installing AC fixing systems.
+                        We are committed to providing clear and reliable assistance and will support you every step
+                        of the way.
+                    </p>
+                    <p>
+                        Our company specializes in air conditioner services, providing high-quality maintenance,
+                        repair, and installation solutions to customers. We understand the importance of air
+                        conditioning in everyday life and strive to ensure that our customers receive the best
+                        service possible. Our team of experts is highly skilled and experienced in handling all
+                        types of air conditioning systems, whether for residential or commercial purposes. In
+                        addition, we offer annual maintenance contracts to our clients, ensuring that their systems
+                        are regularly checked and maintained for optimal performance. Our commitment to excellent
+                        customer service and our reputation for being trustworthy has earned us a loyal customer
+                        base who rely on us for all their air conditioning needs. Choose us for amazing service that
+                        you can trust.
+                    </p>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+    <!-- End About Section -->
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us">
+        <div class="container" data-aos="fade-up">
+            <header class="section-header">
+                <h3>Why choose us?</h3>
+                <p>
+                    We are the most trusted choice when it comes to quick, speedy, simple, machine repair and support
+                    at home.
+                </p>
+            </header>
+
+            <div class="row row-eq-height justify-content-center">
+
+                <div class="col-lg-4 mb-4">
+                    <div class="card" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="~/Content/CoolCare/assets/img/acicon1.png" style="width: 28%;margin: auto;">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Budget-friendly AC Repair Service from Experts</h5>
+                            <p class="card-text">
+                                We offer affordable air conditioning repair services
+                                handled by experienced experts. We use the latest tools and techniques to ensure
+                                timely and efficient service, and pride ourselves on providing quality repairs at
+                                competitive rates.
+                            </p>
+                            <a href="javascript:void(0);" class="readmore">Read more </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                    <div class="card" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="~/Content/CoolCare/assets/img/acicon2.png" style="width: 28%;margin: auto;">
+                        <div class="card-body">
+                            <h5 class="card-title">We Listen to Your Repair Requests</h5>
+                            <p class="card-text">
+                                For any AC issues, remember to contact us for fast and reliable
+                                service. We're here to keep you cool and comfortable.
+                            </p>
+                            <a href="javascript:void(0);" class="readmore">Read more </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                    <div class="card" data-aos="zoom-in" data-aos-delay="300">
+                        <img src="~/Content/CoolCare/assets/img/acicon3.png" style="width: 22%;margin: auto;">
+                        <div class="card-body">
+                            <h5 class="card-title">AC Support 24x7 to assist you in the hour of need</h5>
+                            <p class="card-text">
+                                We provide exceptional customer service, which is why we offer 24/7
+                                support to all customers who have signed up for our annual maintenance contract. Our
+                                team is always available to listen to any concerns or queries you may have, and we
+                                prioritize quick and effective solutions to keep your air conditioning system
+                                running smoothly. Trust us for round-the-clock support and peace of mind
+                            </p>
+                            <a href="javascript:void(0);" class="readmore">Read more </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row counters" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-purecounter-start="0" data-purecounter-end="1" data-purecounter-duration="1"
+                          class="purecounter"></span>
+                    <p>Years of superior service</p>
+                </div>
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-purecounter-start="0" data-purecounter-end="@ViewBag.usercount" data-purecounter-duration="1"
+                          class="purecounter"></span>
+                    <p>Total Customers</p>
+                </div>
+
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-purecounter-start="0" data-purecounter-end="@ViewBag.usercount" data-purecounter-duration="1"
+                          class="purecounter"></span>
+                    <p>Happy Customers</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-purecounter-start="0" data-purecounter-end="@ViewBag.techniciancount" data-purecounter-duration="1"
+                          class="purecounter"></span>
+                    <p>Skilful Technicians</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- End Testimonials Section -->
+    <!-- ======= Contact Section ======= -->
+    <section id="contact">
+        <div class="container-fluid" data-aos="fade-up">
+
+            <div class="section-header2 mb-5">
+                <h3>Contact Us</h3>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-6" style="display: none;">
+                    <div class="map mb-4 mb-lg-0">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
+                                frameborder="0" style="border:0; width: 100%; height: 340px;" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-lg-8" style="margin: auto;">
+                    <div class="row">
+                        <div class="locationIcon col-md-5 info">
+                            <i class="loc bi bi-geo-alt"></i>
+                            <p class="iconText text-white ms-2">
+                                Coolcare office, Palladium mall , S G highway
+                                ahmedabad
+                            </p>
+                        </div>
+                        <div class="mailIcon col-md-4 info">
+                            <i class="mail bi bi-envelope"></i>
+                            <p class="iconText text-white ms-2">coolcare@gmail.com</p>
+                        </div>
+                        <div class="phoneIcon col-md-3 info">
+                            <i class="phone bi bi-phone"></i>
+                            <p class="iconText text-white ms-2">+91-9157224422</p>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="form">
+                        @using (Html.BeginForm("ContactUs", "Home", FormMethod.Post, new { id = "formValidation", @class = "php-email-form", enctype = "multipart/form-data" }))
+                        {
+                            //foreach (var c in Model)
+                            //{
+                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    @Html.TextBoxFor(m => m.ContactU.Name, new { @class = "form-control", @placeholder = "Your Name" })
+                                    @Html.ValidationMessageFor(m => m.ContactU.Name, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group col-lg-6 mt-3 mt-lg-0">
+                                    @Html.TextBoxFor(m => m.ContactU.Email, new { @class = "form-control", @placeholder = "Your Email" })
+                                    @Html.ValidationMessageFor(m => m.ContactU.Email, "", new { @class = "text-danger" })
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-group mt-3">
+                                @Html.TextBoxFor(m => m.ContactU.PhoneNo, new { @class = "form-control", @placeholder = "Phone Number" })
+                                @Html.ValidationMessageFor(m => m.ContactU.PhoneNo, "", new { @class = "text-danger" })
+
+                            </div>
+
+                            <div class="form-group mt-3">
+                                @Html.TextAreaFor(m => m.ContactU.Message, new { @class = "form-control", @rows = "5", @placeholder = "Message" })
+                                @Html.ValidationMessageFor(m => m.ContactU.Message, "", new { @class = "text-danger" })
+
+                            </div>
+
+                            <div class="my-3">
+
+                                <div class="loading"> Loading </div>
+
+                                <div class="error-message"></div>
+
+                                <div class="sent-message">
+                                    Your message has been sent. Thank you!
+                                </div>
+                            </div>
+                            <div class="text-center mt-5">
+                                <button type="submit" title="Send Message" class="sendMessage" name="submit_subadmin"> Send Message </button>
+
+                            </div>
+                        }
+
+
+                    </div>
+
+                </div>
+
+            </div>
+    </section>
+    <!-- End Contact Section -->
+
+</main>
+<!-- End #main -->
+@*<script type="text/javascript">
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>*@
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")

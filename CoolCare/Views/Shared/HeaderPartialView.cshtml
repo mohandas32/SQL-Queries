@@ -1,0 +1,36 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+@Styles.Render("~/Content/CoolCare/css/style.css")
+
+
+@*======= Header =======*@
+<header id="header" class="fixed-top d-flex align-items-center">
+    <div class=" container d-flex justify-content-between">
+
+        <div class="logo">
+
+            <a href="/home"><img src="~/Content/CoolCare/assets/img/coolCare.png" alt="" class="img-fluid"></a>
+        </div>
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                @*<li><a class="nav-link scrollto active" href="/Home">Home</a></li>*@
+                @*<li><a class="nav-link scrollto" href="/Home/UserSignUp">Sign Up</a></li>
+                <li><a class="nav-link scrollto" href="/Home/UserLogin">Login</a></li>*@
+                <li><a class="nav-link scrollto" href="/Home/Index">Home</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+
+
+    </div>
+</header>
+
+
+
+@*@Scripts.Render("~/Scripts/CoolCare/main.js")
+@Scripts.Render("~/Scripts/CoolCare/assets/vendor/bootstrap/js/bootstrap.bundle.min.js")*@

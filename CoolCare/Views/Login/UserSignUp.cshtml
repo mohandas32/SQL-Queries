@@ -1,0 +1,190 @@
+﻿@model CoolCare.Models.User
+
+@{
+    ViewBag.Title = "UserSignUp";
+    Layout = "~/Views/Shared/FormLayout.cshtml";
+
+}
+@{
+    Html.RenderPartial("~/Views/Shared/HeaderPartialView.cshtml");
+}
+
+
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/jquery")
+<link href="~/Content/CoolCare/css/UserSignUp.css" rel="stylesheet" />
+
+@if (ViewBag.msg !=null)
+{
+
+
+
+    <script src="~/Content/AdminDashboard/asset/vendor/jquery/jquery.min.js"></script>
+
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+        </symbol>
+        <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+        </symbol>
+        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+        </symbol>
+    </svg>
+
+
+
+    <div class="alertParent" style="display:none;">
+        <div class="alert mt-5 alert-info d-flex align-items-center justify-content-end CoolCareAlert" role="alert" style="width: 500px; position: fixed; top: 35px; right: 0; z-index: 10;">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill" /></svg>
+            <div>
+                A Verification link has been sent to your E-mail. 
+            </div>
+            <button type="button" class="btn-close ms-4" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        $(document).ready(function () {
+            $('.alertParent').show();
+            $('.alertParent').css("display", "block");
+            setTimeout(function () {
+                $('.alertParent').fadeOut('slow');
+                $('.alertParent').css("display", "none !important");
+            }, 5000);
+        });
+    </script>
+}
+
+<div class="container">
+
+    @using (Html.BeginForm("UserSignUp", "Login", FormMethod.Post, new { @class = "formUserSignUp" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="row needs-validation form-horizontal ">
+
+            <h1 class="text-white" align="center">Sign Up</h1>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="FirstName" class="form-label">First Name</label>
+                    @*@Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="LastName" class="form-label">Last Name</label>
+
+                    @*@Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="Address" class="form-label">Address</label>
+
+                    @*@Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="City" class="form-label">City</label>
+
+                    @*@Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control", Value = "Ahmedabad", @readonly = "readonly", title = "Our service is available in Ahmedabad Only" } })
+                    @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="State" class="form-label">State</label>
+
+                    @*@Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control", Value = "Gujarat", @readonly = "readonly", title = "Our service is available in Gujarat Only" } })
+                    @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="Zip" class="form-label">Zip</label>
+                    @*@Html.LabelFor(model => model.Zip, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    @Html.EditorFor(model => model.Pincode, new { htmlAttributes = new { @class = "form-control", } })
+                    @Html.ValidationMessageFor(model => model.Pincode, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="MobileNo" class="form-label">Mobile No.</label>
+
+                    @*@Html.LabelFor(model => model.MobileNo, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    @Html.EditorFor(model => model.MobileNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Email" class="form-label">Email</label>
+
+                    @*@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Password" class="form-label">Password</label>
+
+                    @*@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="ConfirmPassword" class="form-label">Confirm Password</label>
+
+                    @*@Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    @Html.EditorFor(model => model.CnfPassword, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CnfPassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-12 text-center mt-5">
+                <h2 align="center" class="text-danger">@ViewBag.errormsg</h2>
+
+                <button class="btn btn-primary px-3 py-2 submitButton mt-3" onclick="validation()" type="submit">
+                    REGISTER
+                </button>
+            </div>
+            <div class="text-center mt-4">
+                <p><small class="text-white mr-2">If you have Existing Account ?</small> <a href="/Login/UserLogin" class="text-white font-weight-bold">Login Here</a></p>
+            </div>
+        </div>
+    }
+
+
+</div>
+@{
+    Html.RenderPartial("~/Views/Shared/FooterPartialView.cshtml");
+}
+
