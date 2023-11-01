@@ -1,2 +1,2 @@
-# CoolCare
-CoolCare is AC service management system
+# Sql queries
+Practice of Sql during training time
